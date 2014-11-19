@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	Genericode File ActionCodePEPPOL
+        	
+        	Oriol Bausà
+
+     -->
+<CodeList xmlns="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ ../xsd/genericode.xsd">
+  <Identification xmlns="">
+    <ShortName>ActionCodePEPPOL</ShortName>
+    <Version>1.0</Version>
+    <CanonicalUri>PEPPOL</CanonicalUri>
+    <CanonicalVersionUri>PEPPOL-1.0</CanonicalVersionUri>
+    <LocationUri></LocationUri>
+  </Identification>
+  <ColumnSet xmlns="">
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString"/>
+    </Column>
+    <Column Id="name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList xmlns="">
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Add</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Used when a catalogue is sent for the first time to the Catalogue Receiver referring to the contract in the header of the catalogue</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Replace</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Replaces the entire catalogue referring to the contract. This is the default action.</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Update</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Updates a current catalogue</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Delete</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Deletes current catalogue</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</CodeList>

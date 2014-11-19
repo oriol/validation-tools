@@ -40,9 +40,9 @@
     <assert test="$BII2-T10-R037" flag="fatal" id="BII2-T10-R037">[BII2-T10-R037]-Amount due for payment in an invoice MUST NOT be negative</assert>
     <assert test="$BII2-T10-R044" flag="fatal" id="BII2-T10-R044">[BII2-T10-R044]-A seller VAT identifier MUST be provided if the invoice has a VAT total amount</assert>
     <assert test="$BII2-T10-R047" flag="fatal" id="BII2-T10-R047">[BII2-T10-R047]-A buyer VAT identifier MUST be present if the VAT category code is reverse VAT</assert>
+    <assert test="$BII2-T10-R048" flag="fatal" id="BII2-T10-R048">[BII2-T10-R048]-An invoice with a VAT category code of reverse charge MUST NOT contain other VAT categories.</assert>
     <assert test="$BII2-T10-R049" flag="fatal" id="BII2-T10-R049">[BII2-T10-R049]-The invoice total without VAT MUST be equal to the VAT category taxable amount if the VAT category code is reverse charge</assert>
     <assert test="$BII2-T10-R050" flag="fatal" id="BII2-T10-R050">[BII2-T10-R050]-The VAT category tax amount MUST be zero  if the VAT category code is reverse charge (since there is only one VAT category allowed it follows that the invoice tax total for reverse charge invoices is zero)</assert>
-    <assert test="$BII2-T10-R048" flag="fatal" id="BII2-T10-R048">[BII2-T10-R048]-An invoice with a VAT category code of reverse charge MUST NOT contain other VAT categories.</assert>
   </rule>
   <rule context="$Invoice_Line">
     <assert test="$BII2-T10-R017" flag="fatal" id="BII2-T10-R017">[BII2-T10-R017]-Each invoice line MUST have an invoice line identifier</assert>
@@ -93,10 +93,10 @@
   <param name="BII2-T10-R005" value="(cbc:DocumentCurrencyCode)"/>
   <param name="BII2-T10-R006" value="(cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name) or (cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T10-R008" value="(cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name) or (cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)"/>
-  <param name="BII2-T10-R010" value="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)"/>
-  <param name="BII2-T10-R011" value="(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)"/>
-  <param name="BII2-T10-R012" value="(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)"/>
-  <param name="BII2-T10-R013" value="(cac:LegalMonetaryTotal/cbc:PayableAmount)"/>
+  <param name="BII2-T10-R010" value="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)"/>
+  <param name="BII2-T10-R011" value="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)"/>
+  <param name="BII2-T10-R012" value="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)"/>
+  <param name="BII2-T10-R013" value="number(cac:LegalMonetaryTotal/cbc:PayableAmount)"/>
   <param name="BII2-T10-R014" value="(cac:InvoiceLine)"/>
   <param name="BII2-T10-R015" value="(cac:TaxTotal[cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT']/cbc:TaxAmount) or not(cac:InvoiceLine/cac:TaxTotal)"/>
   <param name="BII2-T10-R017" value="(cbc:ID)"/>
@@ -114,7 +114,7 @@
   <param name="BII2-T10-R030" value="(cac:TaxCategory/cbc:Percent) or not(cac:TaxCategory/cbc:ID = 'S')"/>
   <param name="BII2-T10-R031" value="(cbc:StartDate and cbc:EndDate) and (number(translate(cbc:StartDate,'-','')) &lt;= number(translate(cbc:EndDate,'-','')))"/>
   <param name="BII2-T10-R032" value="(cac:StandardItemIdentification/cbc:ID/@schemeID) or not(cac:StandardItemIdentification)"/>
-  <param name="BII2-T10-R033" value="cbc:ItemClassificationCode/@listID"/>
+  <param name="BII2-T10-R033" value="(//cac:CommodityClassification/cbc:ItemClassificationCode/@listID) or not(//cac:CommodityClassification)"/>
   <param name="BII2-T10-R034" value="number(cac:Price/cbc:PriceAmount) &gt;= 0"/>
   <param name="BII2-T10-R035" value="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount) &gt;= 0"/>
   <param name="BII2-T10-R037" value="number(cac:LegalMonetaryTotal/cbc:PayableAmount) &gt;= 0"/>

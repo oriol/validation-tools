@@ -22,17 +22,6 @@
   </rule>
   <rule context="$Buyer">
     <assert test="$BII2-T01-R021" flag="fatal" id="BII2-T01-R021">[BII2-T01-R021]-An order MUST have the buyer party name or a buyer party identifier</assert>
-    <assert test="$BII2-T01-R024" flag="warning" id="BII2-T01-R024">[BII2-T01-R024]-A buyers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
-  </rule>
-  <rule context="$Delivery_Address">
-    <assert test="$BII2-T01-R025" flag="warning" id="BII2-T01-R025">[BII2-T01-R025]-A delivery address  SHOULD have at least and address identifier or all of the following: 
-- City
-- Post code 
-- Country code</assert>
   </rule>
   <rule context="$Expected_totals">
     <assert test="$BII2-T01-R012" flag="fatal" id="BII2-T01-R012">[BII2-T01-R012]-Expected total amount for payment MUST NOT be negative, if expected total amount for payment is provided</assert>
@@ -41,10 +30,6 @@
     <assert test="$BII2-T01-R015" flag="fatal" id="BII2-T01-R015">[BII2-T01-R015]-Expected total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level, if expected total sum of allowance at document level is provided</assert>
     <assert test="$BII2-T01-R016" flag="fatal" id="BII2-T01-R016">[BII2-T01-R016]-Expected total sum of charges at document level MUST be equal to the sum of charges at document level, if expected total sum of charges at document level is provided</assert>
     <assert test="$BII2-T01-R017" flag="fatal" id="BII2-T01-R017">[BII2-T01-R017]-Expected total amount for payment MUST be equal to the sum of line amounts minus sum of allowances at document level plus sum of charges at document level  and VAT total amount, if expected total amount for payment is provided</assert>
-  </rule>
-  <rule context="$Item">
-    <assert test="$BII2-T01-R026" flag="warning" id="BII2-T01-R026">[BII2-T01-R026]-An item standard Identifier SHOULD have an identification schema (e.g. GTIN)</assert>
-    <assert test="$BII2-T01-R027" flag="warning" id="BII2-T01-R027">[BII2-T01-R027]-An item commodity classification SHOULD have a code list identifier (e.g. CPV or UNSPSC)</assert>
   </rule>
   <rule context="$Item_property">
     <assert test="$BII2-T01-R019" flag="fatal" id="BII2-T01-R019">[BII2-T01-R019]-Each item property MUST have a data name, if item property is provided</assert>
@@ -69,11 +54,6 @@
   </rule>
   <rule context="$Seller">
     <assert test="$BII2-T01-R022" flag="fatal" id="BII2-T01-R022">[BII2-T01-R022]-An order MUST have the seller party name or a seller party identifier</assert>
-    <assert test="$BII2-T01-R023" flag="warning" id="BII2-T01-R023">[BII2-T01-R023]-A sellers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
   </rule>
 </pattern><?DSDL_INCLUDE_END abstract/BIIRULES-T01.sch?>
   <!-- Data Binding parameters -->
@@ -100,11 +80,6 @@
   <param name="BII2-T01-R020" value="(ram:Description)"/>
   <param name="BII2-T01-R021" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T01-R022" value="(ram:Name) or (ram:ID)"/>
-  <param name="BII2-T01-R023" value="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R024" value="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R025" value="(ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R026" value="(ram:GlobalID/@schemeID)"/>
-  <param name="BII2-T01-R027" value="(ram:DesignatedCIProductClassification/ram:ClassCode/@listID)"/>
   <param name="BII2-T01-R029" value="(ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity)"/>
   <param name="BII2-T01-R030" value="(ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity/@unitCode)"/>
   <param name="BII2-T01-R031" value="(ram:SpecifiedCITradeProduct/ram:GlobalID) or (ram:SpecifiedCITradeProduct/ram:SellerAssignedID) or (ram:SpecifiedCITradeProduct/ram:Name)"/>
@@ -115,7 +90,6 @@
   <param name="Item_property" value="//ram:ApplicableCIOHSupplyChainTradeSettlement/ram:IncludedCIOLSupplyChainTradeLineItem/ram:SpecifiedCITradeProduct/ram:ApplicableCIProductCharacteristic"/>
   <param name="Seller" value="//ram:SellerCITradeParty"/>
   <param name="Buyer" value="//ram:BuyerCITradeParty"/>
-  <param name="Delivery_Address" value="//ram:DeliveryCITradeParty"/>
   <param name="Item" value="//ram:SpecifiedCITradeProduct"/>
 </pattern><?DSDL_INCLUDE_END CEFACT/BIIRULES-CEFACT-T01.sch?>
   <!-- Code Lists Binding rules -->

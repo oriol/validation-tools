@@ -29,19 +29,11 @@
   </rule>
   <rule context="$despatch_advice_Line">
     <assert test="$BII2-T16-R013" flag="fatal" id="BII2-T16-R013">[BII2-T16-R013]-Each despatch advice line MUST have a despatch line identifier that is unique within the despatch advice</assert>
-    <assert test="$BII2-T16-R014" flag="warning" id="BII2-T16-R014">[BII2-T16-R014]-Each despatch advice line SHOULD have an order line reference</assert>
     <assert test="$BII2-T16-R016" flag="fatal" id="BII2-T16-R016">[BII2-T16-R016]-Each despatch advice line MUST have an item identifier and/or an item name</assert>
     <assert test="$BII2-T16-R017" flag="warning" id="BII2-T16-R017">[BII2-T16-R017]-Each despatch advice line SHOULD have a delivered quantity</assert>
     <assert test="$BII2-T16-R019" flag="fatal" id="BII2-T16-R019">[BII2-T16-R019]-Each despatch advice line delivered quantity MUST not be negative</assert>
     <assert test="$BII2-T16-R020" flag="warning" id="BII2-T16-R020">[BII2-T16-R020]-Each despatch advice line delivered quantity  SHOULD have an associated unit of measure</assert>
     <assert test="$BII2-T16-R021" flag="warning" id="BII2-T16-R021">[BII2-T16-R021]-An outstanding quantity reason SHOULD be provided if the despatch line contains an outstanding quantity</assert>
-  </rule>
-  <rule context="$despatch_delivery_address">
-    <assert test="$BII2-T16-R010" flag="warning" id="BII2-T16-R010">[BII2-T16-R010]-A despatch delivery address SHOULD have at least all of the following:
-- Address line
-- City
-- Post code
-- Country code</assert>
   </rule>
   <rule context="$despatched_shipment">
     <assert test="$BII2-T16-R011" flag="fatal" id="BII2-T16-R011">[BII2-T16-R011]-Shipment identifier MUST be provided if the despatch advice contains shipment information</assert>
@@ -65,11 +57,9 @@
   <param name="BII2-T16-R007" value="(ram:Name) and (ram:ID)"/>
   <param name="BII2-T16-R008" value="(//ram:ShipToCITradeParty)"/>
   <param name="BII2-T16-R009" value="(ram:Name) and (ram:ID)"/>
-  <param name="BII2-T16-R010" value="(ram:LineOne) and (ram:CityName) and (ram:PostcodeCode) and (ram:CountryID)"/>
   <param name="BII2-T16-R011" value="//ram:SpecifiedCIDDLLogisticsPackage/ram:ID"/>
   <param name="BII2-T16-R012" value="//ram:IncludedCIDDLSupplyChainTradeLineItem"/>
   <param name="BII2-T16-R013" value="//ram:AssociatedCIDDLDocumentLineDocument/ram:LineID"/>
-  <param name="BII2-T16-R014" value="//ram:SpecifiedCIDDLSupplyChainTradeAgreement/ram:BuyerOrderReferencedCIReferencedDocument/ram:LineID"/>
   <param name="BII2-T16-R016" value="//ram:SpecifiedCITradeProduct/ram:Name or //ram:SpecifiedCITradeProduct/ram:SellerAssignedID or //ram:SpecifiedCITradeProduct/ram:GlobalID"/>
   <param name="BII2-T16-R017" value="//ram:SpecifiedCIDDLSupplyChainTradeDelivery/ram:ProductUnitQuantity"/>
   <param name="BII2-T16-R018" value="(//ram:SpecifiedCITradeProduct/ram:GlobalID/@schemeID) or not(//ram:SpecifiedCITradeProduct/ram:GlobalID)"/>

@@ -11,11 +11,9 @@
   <param name="BII2-T16-R007" value="(ram:Name) and (ram:ID)"/>
   <param name="BII2-T16-R008" value="(//ram:ShipToCITradeParty)"/>
   <param name="BII2-T16-R009" value="(ram:Name) and (ram:ID)"/>
-  <param name="BII2-T16-R010" value="(ram:LineOne) and (ram:CityName) and (ram:PostcodeCode) and (ram:CountryID)"/>
   <param name="BII2-T16-R011" value="//ram:SpecifiedCIDDLLogisticsPackage/ram:ID"/>
   <param name="BII2-T16-R012" value="//ram:IncludedCIDDLSupplyChainTradeLineItem"/>
   <param name="BII2-T16-R013" value="//ram:AssociatedCIDDLDocumentLineDocument/ram:LineID"/>
-  <param name="BII2-T16-R014" value="//ram:SpecifiedCIDDLSupplyChainTradeAgreement/ram:BuyerOrderReferencedCIReferencedDocument/ram:LineID"/>
   <param name="BII2-T16-R016" value="//ram:SpecifiedCITradeProduct/ram:Name or //ram:SpecifiedCITradeProduct/ram:SellerAssignedID or //ram:SpecifiedCITradeProduct/ram:GlobalID"/>
   <param name="BII2-T16-R017" value="//ram:SpecifiedCIDDLSupplyChainTradeDelivery/ram:ProductUnitQuantity"/>
   <param name="BII2-T16-R018" value="(//ram:SpecifiedCITradeProduct/ram:GlobalID/@schemeID) or not(//ram:SpecifiedCITradeProduct/ram:GlobalID)"/>

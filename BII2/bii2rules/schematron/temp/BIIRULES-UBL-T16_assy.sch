@@ -27,19 +27,11 @@
   </rule>
   <rule context="//cac:DespatchLine">
     <assert test="(cbc:ID)" flag="fatal" id="BII2-T16-R013">[BII2-T16-R013]-Each despatch advice line MUST have a despatch line identifier that is unique within the despatch advice</assert>
-    <assert test="(cac:OrderLineReference/cbc:LineID)" flag="warning" id="BII2-T16-R014">[BII2-T16-R014]-Each despatch advice line SHOULD have an order line reference</assert>
     <assert test="(cac:Item/cbc:Name) or (cac:Item/cac:StandardItemIdentification/cbc:ID) or  (cac:Item/cac:SellersItemIdentification/cbc:ID)" flag="fatal" id="BII2-T16-R016">[BII2-T16-R016]-Each despatch advice line MUST have an item identifier and/or an item name</assert>
     <assert test="(cbc:DeliveredQuantity)" flag="warning" id="BII2-T16-R017">[BII2-T16-R017]-Each despatch advice line SHOULD have a delivered quantity</assert>
     <assert test="number(cbc:DeliveredQuantity) &gt;= 0" flag="fatal" id="BII2-T16-R019">[BII2-T16-R019]-Each despatch advice line delivered quantity MUST not be negative</assert>
     <assert test="(cbc:DeliveredQuantity/@unitCode)" flag="warning" id="BII2-T16-R020">[BII2-T16-R020]-Each despatch advice line delivered quantity  SHOULD have an associated unit of measure</assert>
     <assert test="((cbc:OutstandingQuantity) and (cbc:OutstandingReason)) or not(cbc:OutstandingQuantity)" flag="warning" id="BII2-T16-R021">[BII2-T16-R021]-An outstanding quantity reason SHOULD be provided if the despatch line contains an outstanding quantity</assert>
-  </rule>
-  <rule context="//cac:DeliveryCustomerParty/cac:Party/cac:PostalAddress">
-    <assert test="(cbc:StreetName) and (cbc:CityName) and (cbc:PostalZone) and (cac:Country/cbc:IdentificationCode)" flag="warning" id="BII2-T16-R010">[BII2-T16-R010]-A despatch delivery address SHOULD have at least all of the following:
-- Address line
-- City
-- Post code
-- Country code</assert>
   </rule>
   <rule context="//cac:Shipment">
     <assert test="(cbc:ID)" flag="fatal" id="BII2-T16-R011">[BII2-T16-R011]-Shipment identifier MUST be provided if the despatch advice contains shipment information</assert>
@@ -48,7 +40,7 @@
     <assert test="(cac:Party/cac:PartyName/cbc:Name)" flag="warning" id="BII2-T16-R007">[BII2-T16-R007]-A despatching party SHOULD have the despatching party name</assert>
   </rule>
   <rule context="//cac:Item">
-    <assert test="(cac:StandardItemIdentification/cbc:ID/@schemeID) or not(cac:StandardItemIdentification)" flag="fatal" id="BII2-T16-R018">[BII2-T16-R018]-An item standard identifier MUST have an identification schema (e.g. GTIN)</assert>
+    <assert test="(//cac:StandardItemIdentification/cbc:ID/@schemeID) or not(//cac:StandardItemIdentification)" flag="fatal" id="BII2-T16-R018">[BII2-T16-R018]-An item standard identifier MUST have an identification schema (e.g. GTIN)</assert>
   </rule>
 </pattern>
 </schema>

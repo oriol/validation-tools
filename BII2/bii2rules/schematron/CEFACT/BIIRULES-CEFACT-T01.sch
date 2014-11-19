@@ -23,11 +23,6 @@
   <param name="BII2-T01-R020" value="(ram:Description)"/>
   <param name="BII2-T01-R021" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T01-R022" value="(ram:Name) or (ram:ID)"/>
-  <param name="BII2-T01-R023" value="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R024" value="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R025" value="(ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)"/>
-  <param name="BII2-T01-R026" value="(ram:GlobalID/@schemeID)"/>
-  <param name="BII2-T01-R027" value="(ram:DesignatedCIProductClassification/ram:ClassCode/@listID)"/>
   <param name="BII2-T01-R029" value="(ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity)"/>
   <param name="BII2-T01-R030" value="(ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity/@unitCode)"/>
   <param name="BII2-T01-R031" value="(ram:SpecifiedCITradeProduct/ram:GlobalID) or (ram:SpecifiedCITradeProduct/ram:SellerAssignedID) or (ram:SpecifiedCITradeProduct/ram:Name)"/>
@@ -38,6 +33,5 @@
   <param name="Item_property" value="//ram:ApplicableCIOHSupplyChainTradeSettlement/ram:IncludedCIOLSupplyChainTradeLineItem/ram:SpecifiedCITradeProduct/ram:ApplicableCIProductCharacteristic"/>
   <param name="Seller" value="//ram:SellerCITradeParty"/>
   <param name="Buyer" value="//ram:BuyerCITradeParty"/>
-  <param name="Delivery_Address" value="//ram:DeliveryCITradeParty"/>
   <param name="Item" value="//ram:SpecifiedCITradeProduct"/>
 </pattern>

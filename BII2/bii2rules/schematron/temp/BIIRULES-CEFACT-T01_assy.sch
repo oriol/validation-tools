@@ -20,17 +20,6 @@
   </rule>
   <rule context="//ram:BuyerCITradeParty">
     <assert test="(ram:Name) or (ram:ID)" flag="fatal" id="BII2-T01-R021">[BII2-T01-R021]-An order MUST have the buyer party name or a buyer party identifier</assert>
-    <assert test="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)" flag="warning" id="BII2-T01-R024">[BII2-T01-R024]-A buyers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
-  </rule>
-  <rule context="//ram:DeliveryCITradeParty">
-    <assert test="(ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)" flag="warning" id="BII2-T01-R025">[BII2-T01-R025]-A delivery address  SHOULD have at least and address identifier or all of the following: 
-- City
-- Post code 
-- Country code</assert>
   </rule>
   <rule context="//ram:SpecifiedCIOHTradeSettlementMonetarySummation">
     <assert test="false" flag="fatal" id="BII2-T01-R012">[BII2-T01-R012]-Expected total amount for payment MUST NOT be negative, if expected total amount for payment is provided</assert>
@@ -39,10 +28,6 @@
     <assert test="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&#34;false&#34;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount)" flag="fatal" id="BII2-T01-R015">[BII2-T01-R015]-Expected total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level, if expected total sum of allowance at document level is provided</assert>
     <assert test="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&#34;true&#34;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount)" flag="fatal" id="BII2-T01-R016">[BII2-T01-R016]-Expected total sum of charges at document level MUST be equal to the sum of charges at document level, if expected total sum of charges at document level is provided</assert>
     <assert test="false" flag="fatal" id="BII2-T01-R017">[BII2-T01-R017]-Expected total amount for payment MUST be equal to the sum of line amounts minus sum of allowances at document level plus sum of charges at document level  and VAT total amount, if expected total amount for payment is provided</assert>
-  </rule>
-  <rule context="//ram:SpecifiedCITradeProduct">
-    <assert test="(ram:GlobalID/@schemeID)" flag="warning" id="BII2-T01-R026">[BII2-T01-R026]-An item standard Identifier SHOULD have an identification schema (e.g. GTIN)</assert>
-    <assert test="(ram:DesignatedCIProductClassification/ram:ClassCode/@listID)" flag="warning" id="BII2-T01-R027">[BII2-T01-R027]-An item commodity classification SHOULD have a code list identifier (e.g. CPV or UNSPSC)</assert>
   </rule>
   <rule context="//ram:ApplicableCIOHSupplyChainTradeSettlement/ram:IncludedCIOLSupplyChainTradeLineItem/ram:SpecifiedCITradeProduct/ram:ApplicableCIProductCharacteristic">
     <assert test="(ram:ID)" flag="fatal" id="BII2-T01-R019">[BII2-T01-R019]-Each item property MUST have a data name, if item property is provided</assert>
@@ -67,11 +52,6 @@
   </rule>
   <rule context="//ram:SellerCITradeParty">
     <assert test="(ram:Name) or (ram:ID)" flag="fatal" id="BII2-T01-R022">[BII2-T01-R022]-An order MUST have the seller party name or a seller party identifier</assert>
-    <assert test="(ram:PostalCITradeAddress/ram:LineOne) and (ram:PostalCITradeAddress/ram:CityName) and (ram:PostalCITradeAddress/ram:PostcodeCode) and (ram:PostalCITradeAddress/ram:CountryID)" flag="warning" id="BII2-T01-R023">[BII2-T01-R023]-A sellers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
   </rule>
 </pattern>
   

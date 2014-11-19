@@ -9,10 +9,10 @@
   <param name="BII2-T14-R005" value="(cbc:DocumentCurrencyCode)"/>
   <param name="BII2-T14-R006" value="(cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name) or (cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T14-R008" value="(cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name) or (cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID)"/>
-  <param name="BII2-T14-R010" value="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)"/>
-  <param name="BII2-T14-R011" value="(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)"/>
-  <param name="BII2-T14-R012" value="(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)"/>
-  <param name="BII2-T14-R013" value="(cac:LegalMonetaryTotal/cbc:PayableAmount)"/>
+  <param name="BII2-T14-R010" value="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)"/>
+  <param name="BII2-T14-R011" value="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)"/>
+  <param name="BII2-T14-R012" value="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)"/>
+  <param name="BII2-T14-R013" value="number(cac:LegalMonetaryTotal/cbc:PayableAmount)"/>
   <param name="BII2-T14-R014" value="(cac:CreditNoteLine)"/>
   <param name="BII2-T14-R015" value="(cac:TaxTotal[cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT']/cbc:TaxAmount) or not(cac:CreditNoteLine/cac:TaxTotal)"/>
   <param name="BII2-T14-R017" value="(cbc:ID)"/>
@@ -30,7 +30,7 @@
   <param name="BII2-T14-R030" value="(cac:TaxCategory/cbc:Percent) or not(cac:TaxCategory/cbc:ID = 'S')"/>
   <param name="BII2-T14-R031" value="(cbc:StartDate and cbc:EndDate) and (number(translate(cbc:StartDate,'-','')) &lt;= number(translate(cbc:EndDate,'-','')))"/>
   <param name="BII2-T14-R032" value="(cac:StandardItemIdentification/cbc:ID/@schemeID) or not(cac:StandardItemIdentification)"/>
-  <param name="BII2-T14-R033" value="(cbc:ItemClassificationCode/@listID)"/>
+  <param name="BII2-T14-R033" value="(//cac:CommodityClassification/cbc:ItemClassificationCode/@listID) or not(//cac:CommodityClassification)"/>
   <param name="BII2-T14-R034" value="number(cac:Price/cbc:PriceAmount) &gt;= 0"/>
   <param name="BII2-T14-R035" value="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount) &gt;= 0"/>
   <param name="BII2-T14-R037" value="number(cac:LegalMonetaryTotal/cbc:PayableAmount) &gt;= 0"/>

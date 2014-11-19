@@ -20,17 +20,6 @@
   </rule>
   <rule context="//cac:BuyerCustomerParty">
     <assert test="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)" flag="fatal" id="BII2-T01-R021">[BII2-T01-R021]-An order MUST have the buyer party name or a buyer party identifier</assert>
-    <assert test="(cac:Party/cac:PostalAddress/cbc:StreetName) and (cac:Party/cac:PostalAddress/cbc:CityName) and (cac:Party/cac:PostalAddress/cbc:PostalZone) and (cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)  " flag="warning" id="BII2-T01-R024">[BII2-T01-R024]-A buyers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
-  </rule>
-  <rule context="//cac:DeliveryLocation/cac:Address">
-    <assert test="(cbc:ID) or ((cbc:CityName) and (cbc:PostalZone) and (cac:Country/cbc:IdentificationCode))" flag="warning" id="BII2-T01-R025">[BII2-T01-R025]-A delivery address  SHOULD have at least and address identifier or all of the following: 
-- City
-- Post code 
-- Country code</assert>
   </rule>
   <rule context="//cac:AnticipatedMonetaryTotal">
     <assert test="number(cbc:PayableAmount) &gt;= 0" flag="fatal" id="BII2-T01-R012">[BII2-T01-R012]-Expected total amount for payment MUST NOT be negative, if expected total amount for payment is provided</assert>
@@ -39,10 +28,6 @@
     <assert test="(cbc:AllowanceTotalAmount and cbc:AllowanceTotalAmount = (round(sum(/ubl:Order/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;false&#34;]/cbc:Amount) * 10 * 10) div 100)) or not(cbc:AllowanceTotalAmount)" flag="fatal" id="BII2-T01-R015">[BII2-T01-R015]-Expected total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level, if expected total sum of allowance at document level is provided</assert>
     <assert test="(cbc:ChargeTotalAmount and cbc:ChargeTotalAmount = (round(sum(/ubl:Order/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount) * 10 * 10) div 100)) or not(cbc:ChargeTotalAmount)" flag="fatal" id="BII2-T01-R016">[BII2-T01-R016]-Expected total sum of charges at document level MUST be equal to the sum of charges at document level, if expected total sum of charges at document level is provided</assert>
     <assert test="(/ubl:Order/cac:TaxTotal/cbc:TaxAmount) and ((cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = (number(cbc:LineExtensionAmount) + number(/ubl:Order/cac:TaxTotal/cbc:TaxAmount) + number(cbc:ChargeTotalAmount) - number(cbc:AllowanceTotalAmount)))) or (not(cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount) + number(/ubl:Order/cac:TaxTotal/cbc:TaxAmount)  - number(cbc:AllowanceTotalAmount))) or ((cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount) + number(/ubl:Order/cac:TaxTotal/cbc:TaxAmount)  + number(cbc:ChargeTotalAmount))) or (not(cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount) + number(/ubl:Order/cac:TaxTotal/cbc:TaxAmount))) or not(/ubl:Order/cac:TaxTotal/cbc:TaxAmount) and ((cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and  (number(cbc:PayableAmount) = (number(cbc:LineExtensionAmount) + number(cbc:ChargeTotalAmount) - number(cbc:AllowanceTotalAmount)))) or (not(cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount)  - number(cbc:AllowanceTotalAmount))) or ((cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount)  + number(cbc:ChargeTotalAmount))) or (not(cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount)))" flag="fatal" id="BII2-T01-R017">[BII2-T01-R017]-Expected total amount for payment MUST be equal to the sum of line amounts minus sum of allowances at document level plus sum of charges at document level  and VAT total amount, if expected total amount for payment is provided</assert>
-  </rule>
-  <rule context="//cac:Item">
-    <assert test="(cac:StandardItemIdentification/cbc:ID/@schemeID) or not(cac:StandardItemIdentification)" flag="warning" id="BII2-T01-R026">[BII2-T01-R026]-An item standard Identifier SHOULD have an identification schema (e.g. GTIN)</assert>
-    <assert test="(cac:CommodityClassification/cbc:ItemClassificationCode/@listID)" flag="warning" id="BII2-T01-R027">[BII2-T01-R027]-An item commodity classification SHOULD have a code list identifier (e.g. CPV or UNSPSC)</assert>
   </rule>
   <rule context="//cac:AdditionalItemProperty">
     <assert test="(cbc:Name)" flag="fatal" id="BII2-T01-R019">[BII2-T01-R019]-Each item property MUST have a data name, if item property is provided</assert>
@@ -67,11 +52,6 @@
   </rule>
   <rule context="//cac:SellerSupplierParty">
     <assert test="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)" flag="fatal" id="BII2-T01-R022">[BII2-T01-R022]-An order MUST have the seller party name or a seller party identifier</assert>
-    <assert test="(cac:Party/cac:PostalAddress/cbc:StreetName) and (cac:Party/cac:PostalAddress/cbc:CityName) and (cac:Party/cac:PostalAddress/cbc:PostalZone) and (cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)  " flag="warning" id="BII2-T01-R023">[BII2-T01-R023]-A sellers postal address SHOULD have at least all of the following: 
-- Address line
-- City
-- Post code 
-- Country code</assert>
   </rule>
 </pattern>
   

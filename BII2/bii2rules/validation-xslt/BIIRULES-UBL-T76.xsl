@@ -2,8 +2,6 @@
 <axsl:stylesheet xmlns:axsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:saxon="http://saxon.sf.net/" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2" version="1.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 
-
-
 <!--PHASES-->
 
 
@@ -321,9 +319,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(cac:OrderDocumentReference/cbc:ID)"/>
+         <axsl:when test="(cac:OrderReference/cbc:ID)"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:OrderDocumentReference/cbc:ID)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:OrderReference/cbc:ID)">
                <axsl:attribute name="id">BII2-T76-R032</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">
@@ -337,9 +335,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(//cbc:ResponseCode)"/>
+         <axsl:when test="(//cbc:OrderResponseCode)"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(//cbc:ResponseCode)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(//cbc:OrderResponseCode)">
                <axsl:attribute name="id">BII2-T76-R033</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

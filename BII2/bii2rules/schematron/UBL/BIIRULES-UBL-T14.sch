@@ -27,7 +27,7 @@
   <param name="BII2-T14-R027" value="(cbc:TaxableAmount)"/>
   <param name="BII2-T14-R028" value="(cbc:TaxAmount)"/>
   <param name="BII2-T14-R029" value="(cac:TaxCategory/cbc:ID)"/>
-  <param name="BII2-T14-R030" value="(cac:TaxCategory/cbc:Percent) or not(cac:TaxCategory/cbc:ID = 'S')"/>
+  <param name="BII2-T14-R030" value="(cac:TaxCategory/cbc:Percent) or not(normalize-space(cac:TaxCategory/cbc:ID) = 'S')"/>
   <param name="BII2-T14-R031" value="(cbc:StartDate and cbc:EndDate) and (number(translate(cbc:StartDate,'-','')) &lt;= number(translate(cbc:EndDate,'-','')))"/>
   <param name="BII2-T14-R032" value="(cac:StandardItemIdentification/cbc:ID/@schemeID) or not(cac:StandardItemIdentification)"/>
   <param name="BII2-T14-R033" value="(//cac:CommodityClassification/cbc:ItemClassificationCode/@listID) or not(//cac:CommodityClassification)"/>
@@ -36,7 +36,7 @@
   <param name="BII2-T14-R037" value="number(cac:LegalMonetaryTotal/cbc:PayableAmount) &gt;= 0"/>
   <param name="BII2-T14-R043" value="(/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)"/>
   <param name="BII2-T14-R044" value="(cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID) or not(cac:TaxTotal/*/*/*/cbc:ID = 'VAT')"/>
-  <param name="BII2-T14-R045" value="(cac:TaxCategory/cbc:TaxExemptionReason) or not ((cac:TaxCategory/cbc:ID='E') or (cac:TaxCategory/cbc:ID='AE'))"/>
+  <param name="BII2-T14-R045" value="(cac:TaxCategory/cbc:TaxExemptionReason) or not ((normalize-space(cac:TaxCategory/cbc:ID)='E') or (normalize-space(cac:TaxCategory/cbc:ID)='AE'))"/>
   <param name="BII2-T14-R046" value="(cac:Item/cac:ClassifiedTaxCategory/cbc:ID) or not(/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID='VAT')"/>
   <param name="BII2-T14-R047" value="(cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID) or not(cac:TaxTotal/*/*/cbc:ID = 'AE')"/>
   <param name="BII2-T14-R048" value="count(child::cac:TaxTotal/*/*/cbc:ID) = count(child::cac:TaxTotal/*/*/cbc:ID[. = 'AE']) or count(child::cac:TaxTotal/*/*/cbc:ID[. = 'AE']) = 0"/>

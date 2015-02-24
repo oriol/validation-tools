@@ -330,9 +330,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)"/>
+         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = cac:LegalMonetaryTotal/cbc:LineExtensionAmount "/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = cac:LegalMonetaryTotal/cbc:LineExtensionAmount">
                <axsl:attribute name="id">BII2-T10-R010</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">
@@ -346,9 +346,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)"/>
+         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount) = cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount) = cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount">
                <axsl:attribute name="id">BII2-T10-R011</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">
@@ -362,9 +362,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)"/>
+         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount) = cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount) = cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount">
                <axsl:attribute name="id">BII2-T10-R012</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">
@@ -378,9 +378,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:PayableAmount)"/>
+         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:PayableAmount) = cac:LegalMonetaryTotal/cbc:PayableAmount"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:PayableAmount)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:PayableAmount) = cac:LegalMonetaryTotal/cbc:PayableAmount">
                <axsl:attribute name="id">BII2-T10-R013</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

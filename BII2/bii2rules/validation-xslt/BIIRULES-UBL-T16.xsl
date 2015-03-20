@@ -3,7 +3,6 @@
     the preferred method for meta-stylesheets to use where possible. -->
 
 
-
 <!--PHASES-->
 
 
@@ -146,7 +145,9 @@
 
    <axsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="BIIRULES  T16 bound to UBL" schemaVersion="">
+         <axsl:comment>
 
+         </axsl:comment>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" prefix="cac"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" prefix="ubl"/>
@@ -380,9 +381,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cbc:DeliveredQuantity) &gt;= 0"/>
+         <axsl:when test="(cbc:DeliveredQuantity) &gt;= 0"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cbc:DeliveredQuantity) &gt;= 0">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:DeliveredQuantity) &gt;= 0">
                <axsl:attribute name="id">BII2-T16-R019</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

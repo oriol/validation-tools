@@ -3,7 +3,6 @@
     the preferred method for meta-stylesheets to use where possible. -->
 
 
-
 <!--PHASES-->
 
 
@@ -146,7 +145,9 @@
 
    <axsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="BIIRULES  T02 bound to UBL" schemaVersion="">
+         <axsl:comment>
 
+         </axsl:comment>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" prefix="cac"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2" prefix="ubl"/>

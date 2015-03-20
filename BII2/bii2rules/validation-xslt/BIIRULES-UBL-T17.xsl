@@ -145,7 +145,9 @@
 
    <axsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="BIIRULES  T17 bound to UBL" schemaVersion="">
+         <axsl:comment>
 
+         </axsl:comment>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" prefix="cac"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:Reminder-2" prefix="ubl"/>
@@ -337,9 +339,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = number(round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)"/>
+         <axsl:when test="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = (round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = number(round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = (round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)">
                <axsl:attribute name="id">BII2-T17-R010</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

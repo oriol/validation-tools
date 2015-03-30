@@ -785,9 +785,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="((cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = (round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount)) + (cbc:PayableRoundingAmount)) *10 * 10) div 100))) or ((cbc:TaxInclusiveAmount) = round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount))) * 10 * 10) div 100)"/>
+         <axsl:when test="((cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = (round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount)) + (cbc:PayableRoundingAmount)) *10 * 10) div 100))) or (not(cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount))) * 10 * 10) div 100))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="((cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = (round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount)) + (cbc:PayableRoundingAmount)) *10 * 10) div 100))) or ((cbc:TaxInclusiveAmount) = round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount))) * 10 * 10) div 100)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="((cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = (round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount)) + (cbc:PayableRoundingAmount)) *10 * 10) div 100))) or (not(cbc:PayableRoundingAmount) and ((cbc:TaxInclusiveAmount) = round(((cbc:TaxExclusiveAmount) + (sum(/ubl:CreditNote/cac:TaxTotal/cbc:TaxAmount))) * 10 * 10) div 100))">
                <axsl:attribute name="id">BII2-T14-R053</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

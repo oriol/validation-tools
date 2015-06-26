@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	Genericode File InvoiceTypeCode
+        	
+        	Oriol Bausà
+
+     -->
+<CodeList xmlns="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ ../xsd/genericode.xsd">
+  <Identification xmlns="">
+    <ShortName>InvoiceTypeCode</ShortName>
+    <Version></Version>
+    <CanonicalUri>United Nations Economic Commission for Europe</CanonicalUri>
+    <CanonicalVersionUri>United Nations Economic Commission for Europe-</CanonicalVersionUri>
+    <LocationUri></LocationUri>
+  </Identification>
+  <ColumnSet xmlns="">
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString"/>
+    </Column>
+    <Column Id="name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList xmlns="">
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>380</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Commercial invoice</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>393</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Factored invoice</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>384</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Corrected invoice</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</CodeList>

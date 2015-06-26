@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	Genericode File TechnicalCapabilityTypeCode
+        	
+        	Oriol Bausà
+
+     -->
+<CodeList xmlns="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ ../xsd/genericode.xsd">
+  <Identification xmlns="">
+    <ShortName>TechnicalCapabilityTypeCode</ShortName>
+    <Version>1.0</Version>
+    <CanonicalUri>BII</CanonicalUri>
+    <CanonicalVersionUri>BII-1.0</CanonicalVersionUri>
+    <LocationUri></LocationUri>
+  </Identification>
+  <ColumnSet xmlns="">
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString"/>
+    </Column>
+    <Column Id="name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList xmlns="">
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECCZZ1</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Other</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECCZZ2</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Not applicable</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECCZZ3</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Not specified</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC000</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Information and formalities necessary for evaluating if requirements are met
+</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC001</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Minimum level(s) of standards possibly required</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC002</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Performed similar projects</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC003</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Technical units</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC004</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Academic and professionals</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC005</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Detailed Organization Chart</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC006</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Environmental measures</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC007</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Logistical Capacity   </SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC008</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Average staff</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC009</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Machinery, material and technical equipment to perform the project</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC010</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Technical instalations and measures to guarantee the quality</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC011</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Control measures on the capability of the tenderer</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC012</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Samples, descriptions and pictures of the products to provide</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC013</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Quality control certificates</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TECC014</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Indicate which part of the contract is planned to be subcontracted</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</CodeList>

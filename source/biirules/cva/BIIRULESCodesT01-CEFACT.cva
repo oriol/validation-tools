@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	CVA File T01
+        	Oriol Bausà 
+
+     -->
+<ValueListConstraints xmlns="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/cd2-1.0/" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:cct="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:udt="urn:un:unece:uncefact:data:draft:UnqualifiedDataTypesSchemaModule:2" xmlns:stat="urn:oasis:names:specification:ubl:schema:xsd:DocumentStatusCode-1.0" name="CodesT01" version="Version 0.3">
+  <ValueLists>
+    <ValueList xml:id="ActionCode" uri="../gc/ActionCode.gc"/>
+    <ValueList xml:id="ActivityTypeCode" uri="../gc/ActivityTypeCode.gc"/>
+    <ValueList xml:id="AllowanceChargeReasonCode" uri="../gc/AllowanceChargeReasonCode.gc"/>
+    <ValueList xml:id="AwardCriterionSpecification" uri="../gc/AwardCriterionSpecification.gc"/>
+    <ValueList xml:id="BinaryObjectMimeCode" uri="../gc/BinaryObjectMimeCode.gc"/>
+    <ValueList xml:id="ContractType" uri="../gc/ContractType.gc"/>
+    <ValueList xml:id="ContractingBodyType" uri="../gc/ContractingBodyType.gc"/>
+    <ValueList xml:id="CommodityCode" uri="../gc/CommodityCode.gc"/>
+    <ValueList xml:id="CriterionType" uri="../gc/CriterionType.gc"/>
+    <ValueList xml:id="DocumentTypeCode" uri="../gc/DocumentTypeCode.gc"/>
+    <ValueList xml:id="EvidenceTypeCode" uri="../gc/EvidenceTypeCode.gc"/>
+    <ValueList xml:id="FinancialCapabilityTypeCode" uri="../gc/FinancialCapabilityTypeCode.gc"/>
+    <ValueList xml:id="InvoiceTypeCode" uri="../gc/InvoiceTypeCode.gc"/>
+    <ValueList xml:id="PaymentMeansCode" uri="../gc/PaymentMeansCode.gc"/>
+    <ValueList xml:id="ProcedureType" uri="../gc/ProcedureType.gc"/>
+    <ValueList xml:id="ProfileID" uri="../gc/ProfileID.gc"/>
+    <ValueList xml:id="ProjectType" uri="../gc/ProjectType.gc"/>
+    <ValueList xml:id="PublicProcurementSector" uri="../gc/PublicProcurementSector.gc"/>
+    <ValueList xml:id="ResponseCode" uri="../gc/ResponseCode.gc"/>
+    <ValueList xml:id="ServicesProjectSubType" uri="../gc/ServicesProjectSubType.gc"/>
+    <ValueList xml:id="SuppliesProjectSubType" uri="../gc/SuppliesProjectSubType.gc"/>
+    <ValueList xml:id="StatusCode" uri="../gc/StatusCode.gc"/>
+    <ValueList xml:id="TechnicalCapabilityTypeCode" uri="../gc/TechnicalCapabilityTypeCode.gc"/>
+    <ValueList xml:id="TaxCategoryID" uri="../gc/TaxCategoryID.gc"/>
+    <ValueList xml:id="TenderDocumentReferenceCode" uri="../gc/TenderDocumentReferenceCode.gc"/>
+    <ValueList xml:id="TendererRole" uri="../gc/TendererRole.gc"/>
+    <ValueList xml:id="TendererRequirementTypeCode" uri="../gc/TendererRequirementTypeCode.gc"/>
+    <ValueList xml:id="TenderSubmissionType" uri="../gc/TenderSubmissionType.gc"/>
+    <ValueList xml:id="TenderTypeCode" uri="../gc/TenderTypeCode.gc"/>
+    <ValueList xml:id="WorksProjectSubType" uri="../gc/WorksProjectSubType.gc"/>
+  </ValueLists>
+  <Contexts>
+    <Context item="ram:CategoryCode" values="TaxCategoryID" mark="warning">
+      <Message>[CL-001-001]-Tax categories MUST be coded using UN/ECE 5305 code list</Message>
+    </Context>
+    <Context item="@schemeID" scope="ram:SpecifiedCITradeProduct/ram:GlobalID" values="CommodityClassificationCode" mark="warning">
+      <Message>[CL-001-002]-Commodity classification SHOULD ONLY be one of UNSPSC, eCl@ss or CPV.</Message>
+    </Context>
+  </Contexts>
+</ValueListConstraints>

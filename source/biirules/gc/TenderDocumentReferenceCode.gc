@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	Genericode File TenderDocumentReferenceCode
+        	
+        	Oriol Bausà
+
+     -->
+<CodeList xmlns="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ ../xsd/genericode.xsd">
+  <Identification xmlns="">
+    <ShortName>TenderDocumentReferenceCode</ShortName>
+    <Version>1.0</Version>
+    <CanonicalUri>BII</CanonicalUri>
+    <CanonicalVersionUri>BII-1.0</CanonicalVersionUri>
+    <LocationUri></LocationUri>
+  </Identification>
+  <ColumnSet xmlns="">
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString"/>
+    </Column>
+    <Column Id="name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList xmlns="">
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>0</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Prior Information Notice (Forecast)</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Corrigenda (AR = Publication errors)</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Additional information (IC = AA changes and cancellations)</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Contract notice</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Prequalification notices</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Request for proposals</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>General information</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Contract award</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>B</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Buyer profile</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>C</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Public works concession</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>D</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Design contest</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>E</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Works contracts awarded by the concessionnaire</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>G</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>European economic interest grouping (EEIG)</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>I</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Call for expressions of interest</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>M</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Periodic indicative notice (PIN) with call for competition</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>O</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Qualification system with call for competition</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>P</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Periodic indicative notice (PIN) without call for competition</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Q</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Qualification system without call for competition</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>R</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Results of design contests</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>S</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>European company</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Y</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Dynamic purchasing system</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>V</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Voluntary ex ante transparency notice</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>8</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Other</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>9</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Not applicable</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CFT</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Call for Tender</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TND</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Tender</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>QUA</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Qualification</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</CodeList>

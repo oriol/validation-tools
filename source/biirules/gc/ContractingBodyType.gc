@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+        	Genericode File ContractingBodyType
+        	
+        	Oriol Bausà
+
+     -->
+<CodeList xmlns="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ ../xsd/genericode.xsd">
+  <Identification xmlns="">
+    <ShortName>ContractingBodyType</ShortName>
+    <Version>1.0</Version>
+    <CanonicalUri>OJEU</CanonicalUri>
+    <CanonicalVersionUri>OJEU-1.0</CanonicalVersionUri>
+    <LocationUri></LocationUri>
+  </Identification>
+  <ColumnSet xmlns="">
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString"/>
+    </Column>
+    <Column Id="name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList xmlns="">
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Ministry or any other national or federal authority</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Regional or local authority</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Utilities</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>European Institution/Agency or International Organisation</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Body governed by public law</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>N</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>National or federal Agency/Office</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>R</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Regional or local Agency/Office</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>8</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Other</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>9</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Not applicable</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>Z</SimpleValue>
+      </Value>
+      <Value ColumnRef="name">
+        <SimpleValue>Not specified</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</CodeList>

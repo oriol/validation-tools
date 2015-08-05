@@ -72,13 +72,13 @@
     <assert test="(cbc:CalculationRate) and (cbc:MathematicOperatorCode)" flag="fatal" id="EUGEN-T14-R045">[EUGEN-T14-R045]-Tax exchange rate MUST specify the calculation rate and the operator code.</assert>
   </rule>
   <rule context="/ubl:CreditNote/cac:TaxTotal">
-    <assert test="(number(child::cbc:TaxAmount)= round(number(sum(cac:TaxSubtotal/cbc:TaxAmount) * 10 * 10)) div 100) " flag="fatal" id="EUGEN-T14-R043">[EUGEN-T14-R043]-The total tax amount MUST equal the sum of tax amounts per category.</assert>
+    <assert test="(xs:decimal(child::cbc:TaxAmount)= round(number(sum(xs:decimal(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100) " flag="fatal" id="EUGEN-T14-R043">[EUGEN-T14-R043]-The total tax amount MUST equal the sum of tax amounts per category.</assert>
   </rule>
   <rule context="//*[contains(name(),'Quantity')]">
     <assert test="not(attribute::unitCode) or (attribute::unitCode and attribute::unitCodeListID = 'UNECERec20')" flag="fatal" id="EUGEN-T14-R030">[EUGEN-T14-R030]-A unit code attribute MUST have a unit code list identifier attribute 'UNECERec20'.</assert>
   </rule>
   <rule context="//cac:TaxSubtotal[cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT']">
-    <assert test="((cbc:TaxableAmount) and (cac:TaxCategory/cbc:Percent) and (cbc:TaxAmount = round((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) *10 * 10) div 100)) or not(cac:TaxCategory/cbc:Percent) or not(cbc:TaxableAmount)" flag="fatal" id="EUGEN-T14-R042">[EUGEN-T14-R042]-The tax amount per category MUST be the taxable amount multiplied by the category percentage.</assert>
+    <assert test="((cbc:TaxableAmount) and (cac:TaxCategory/cbc:Percent) and (xs:decimal((cbc:TaxAmount)) = round((xs:decimal(cbc:TaxableAmount) * (xs:decimal(cac:TaxCategory/cbc:Percent) div 100)) *10 * 10) div 100)) or not(cac:TaxCategory/cbc:Percent) or not(cbc:TaxableAmount)" flag="fatal" id="EUGEN-T14-R042">[EUGEN-T14-R042]-The tax amount per category MUST be the taxable amount multiplied by the category percentage.</assert>
     <assert test="not(/ubl:CreditNote/cbc:TaxCurrencyCode) or (cbc:TaxAmount and cbc:TransactionCurrencyTaxAmount)" flag="fatal" id="EUGEN-T14-R046">[EUGEN-T14-R046]-If the tax currency code is different from the document currency code, each tax subtotal has to include the tax amount in both currencies</assert>
   </rule>
   <rule context="//cac:BillingReference">

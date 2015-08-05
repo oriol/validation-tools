@@ -266,7 +266,7 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(xs:decimal(cbc:LineExtensionAmount)) = (round(sum((xs:decimal(/ubl:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) * 10 * 10) div 100)"/>
+         <axsl:when test="(xs:decimal(cbc:LineExtensionAmount)) = (round(sum(xs:decimal(/ubl:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) * 10 * 10) div 100)"/>
          <axsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(xs:decimal(cbc:LineExtensionAmount)) = (round(sum((xs:decimal(/ubl:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) * 10 * 10) div 100)">
                <axsl:attribute name="id">BII2-T01-R014</axsl:attribute>

@@ -55,7 +55,7 @@
   <param name="BII2-T17-R007" value="(cac:ReminderLine)"/>
   <param name="BII2-T17-R008" value="(cbc:ID)"/>
   <param name="BII2-T17-R009" value="(cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID) or (cac:BillingReference/cac:CreditNoteDocumentReference/cbc:ID)"/>
-  <param name="BII2-T17-R010" value="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = number(round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)"/>
+  <param name="BII2-T17-R010" value="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = (round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)"/>
   <param name="BII2-T17-R011" value="(cac:PartyName/cbc:Name) or (cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T17-R012" value="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T17-R013" value="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>

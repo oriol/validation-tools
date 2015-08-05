@@ -29,7 +29,7 @@
     <assert test="(cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID) or (cac:BillingReference/cac:CreditNoteDocumentReference/cbc:ID)" flag="warning" id="BII2-T17-R009">[BII2-T17-R009]-A reminder line SHOULD specify a referenced billing identifier</assert>
   </rule>
   <rule context="/ubl:Reminder">
-    <assert test="number(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = number(round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)" flag="fatal" id="BII2-T17-R010">[BII2-T17-R010]-Reminder total line extension amount MUST equal the sum of the line totals</assert>
+    <assert test="(cac:LegalMonetaryTotal/cbc:LineExtensionAmount) = (round((sum(//cac:ReminderLine/cbc:DebitLineAmount)- sum(//cac:ReminderLine/cbc:CreditLineAmount)) * 10 * 10) div 100)" flag="fatal" id="BII2-T17-R010">[BII2-T17-R010]-Reminder total line extension amount MUST equal the sum of the line totals</assert>
   </rule>
   <rule context="//cac:PayeeParty">
     <assert test="(cac:PartyName/cbc:Name) or (cac:PartyIdentification/cbc:ID)" flag="fatal" id="BII2-T17-R011">[BII2-T17-R011]-The payee name or payee identifier MUST be specified if payee information is provided</assert>

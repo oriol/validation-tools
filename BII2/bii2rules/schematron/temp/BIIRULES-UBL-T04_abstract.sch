@@ -83,14 +83,14 @@
   <param name="BII2-T04-R006" value="(cbc:ID)"/>
   <param name="BII2-T04-R007" value="(cbc:AllowanceChargeReason)"/>
   <param name="BII2-T04-R009" value="(cbc:DocumentCurrencyCode)"/>
-  <param name="BII2-T04-R010" value="number(cac:LineItem/cbc:Quantity) &gt;= 0"/>
-  <param name="BII2-T04-R011" value="number(cac:LineItem/cac:Price/cbc:PriceAmount) &gt;= 0"/>
-  <param name="BII2-T04-R012" value="number(cbc:PayableAmount) &gt;= 0"/>
-  <param name="BII2-T04-R013" value="number(cbc:LineExtensionAmount) &gt;= 0"/>
-  <param name="BII2-T04-R014" value="number(cbc:LineExtensionAmount) = number(round(sum(/ubl:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount) * 10 * 10) div 100)"/>
+  <param name="BII2-T04-R010" value="(cac:LineItem/cbc:Quantity) &gt;= 0"/>
+  <param name="BII2-T04-R011" value="(cac:LineItem/cac:Price/cbc:PriceAmount) &gt;= 0"/>
+  <param name="BII2-T04-R012" value="(cbc:PayableAmount) &gt;= 0"/>
+  <param name="BII2-T04-R013" value="(cbc:LineExtensionAmount) &gt;= 0"/>
+  <param name="BII2-T04-R014" value="(cbc:LineExtensionAmount) = (round(sum(/ubl:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T04-R015" value="cbc:AllowanceTotalAmount = (round(sum(/ubl:Order/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;false&#34;]/cbc:Amount) * 10 * 10) div 100) or not(cbc:AllowanceTotalAmount)"/>
   <param name="BII2-T04-R016" value="cbc:ChargeTotalAmount = (round(sum(/ubl:Order/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount) * 10 * 10) div 100) or not(cbc:ChargeTotalAmount)"/>
-  <param name="BII2-T04-R017" value="((cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = (number(cbc:LineExtensionAmount) + number(cbc:ChargeTotalAmount) - number(cbc:AllowanceTotalAmount)))) or (not(cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount) - number(cbc:AllowanceTotalAmount))) or ((cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount) + number(cbc:ChargeTotalAmount))) or (not(cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and (number(cbc:PayableAmount) = number(cbc:LineExtensionAmount)))"/>
+  <param name="BII2-T04-R017" value="((cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and ((cbc:PayableAmount) = ((cbc:LineExtensionAmount) + (cbc:ChargeTotalAmount) - (cbc:AllowanceTotalAmount)))) or (not(cbc:ChargeTotalAmount) and (cbc:AllowanceTotalAmount) and ((cbc:PayableAmount) = (cbc:LineExtensionAmount) - (cbc:AllowanceTotalAmount))) or ((cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and ((cbc:PayableAmount) = (cbc:LineExtensionAmount) + (cbc:ChargeTotalAmount))) or (not(cbc:ChargeTotalAmount) and not(cbc:AllowanceTotalAmount) and ((cbc:PayableAmount) = (cbc:LineExtensionAmount)))"/>
   <param name="BII2-T04-R018" value="cac:TaxTotal/cbc:TaxAmount = (round(sum(/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:TotalTaxAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T04-R019" value="(cbc:Name)"/>
   <param name="BII2-T04-R020" value="(cbc:Value)"/>

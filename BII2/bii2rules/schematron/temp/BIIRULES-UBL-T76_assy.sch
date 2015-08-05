@@ -30,8 +30,8 @@
     <assert test="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)" flag="fatal" id="BII2-T76-R022">[BII2-T76-R022]-A order response MUST have the seller party name or a seller party identifier</assert>
   </rule>
   <rule context="/ubl:OrderResponse">
-    <assert test="(cac:OrderDocumentReference/cbc:ID)" flag="fatal" id="BII2-T76-R032">[BII2-T76-R032]-A order response MUST have a reference to an order</assert>
-    <assert test="(//cbc:ResponseCode)" flag="fatal" id="BII2-T76-R033">[BII2-T76-R033]-A order response MUST have a response code</assert>
+    <assert test="(cac:OrderReference/cbc:ID)" flag="fatal" id="BII2-T76-R032">[BII2-T76-R032]-A order response MUST have a reference to an order</assert>
+    <assert test="(//cbc:OrderResponseCode)" flag="fatal" id="BII2-T76-R033">[BII2-T76-R033]-A order response MUST have a response code</assert>
   </rule>
   <rule context="//cac:OrderLine">
     <assert test="(//cac:OrderLineReference/cbc:LineID)" flag="fatal" id="BII2-T76-R034">[BII2-T76-R034]-An order response line MUST contain a reference to its corresponding order line.</assert>

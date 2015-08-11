@@ -832,7 +832,6 @@
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
-      <axsl:apply-templates select="@*|*" mode="M7"/>
    </axsl:template>
 
 	<!--RULE -->
@@ -854,7 +853,6 @@
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
-      <axsl:apply-templates select="@*|*" mode="M7"/>
    </axsl:template>
 
 	<!--RULE -->
@@ -876,7 +874,6 @@
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
-      <axsl:apply-templates select="@*|*" mode="M7"/>
    </axsl:template>
 
 	<!--RULE -->
@@ -898,7 +895,6 @@
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
-      <axsl:apply-templates select="@*|*" mode="M7"/>
    </axsl:template>
 
 	<!--RULE -->
@@ -920,7 +916,6 @@
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
-      <axsl:apply-templates select="@*|*" mode="M7"/>
    </axsl:template>
 
 	<!--RULE -->

@@ -76,7 +76,7 @@
     <assert test="(cbc:CalculationRate) and (cbc:MathematicOperatorCode)" flag="fatal" id="EUGEN-T10-R045">[EUGEN-T10-R045]-Tax exchange rate MUST specify the calculation rate and the operator code.</assert>
   </rule>
   <rule context="/ubl:Invoice/cac:TaxTotal">
-    <assert test="(xs:decimal(child::cbc:TaxAmount)= round(number(sum(xs:decimal(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100) " flag="fatal" id="EUGEN-T10-R043">[EUGEN-T10-R043]-The total tax amount MUST equal the sum of tax amounts per category.</assert>
+    <assert test="(xs:decimal(child::cbc:TaxAmount)= round(number(xs:decimal(sum(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100) " flag="fatal" id="EUGEN-T10-R043">[EUGEN-T10-R043]-The total tax amount MUST equal the sum of tax amounts per category.</assert>
   </rule>
   <rule context="//*[contains(name(),'Quantity')]">
     <assert test="not(attribute::unitCode) or (attribute::unitCode and attribute::unitCodeListID = 'UNECERec20')" flag="fatal" id="EUGEN-T10-R030">[EUGEN-T10-R030]-A unit code attribute MUST have a unit code list identifier attribute 'UNECERec20'.</assert>

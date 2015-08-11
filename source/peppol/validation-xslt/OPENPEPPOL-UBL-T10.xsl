@@ -698,9 +698,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(xs:decimal(child::cbc:TaxAmount)= round(number(sum(xs:decimal(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100) "/>
+         <axsl:when test="(xs:decimal(child::cbc:TaxAmount)= round(number(xs:decimal(sum(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100) "/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(xs:decimal(child::cbc:TaxAmount)= round(number(sum(xs:decimal(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(xs:decimal(child::cbc:TaxAmount)= round(number(xs:decimal(sum(cac:TaxSubtotal/cbc:TaxAmount)) * 10 * 10)) div 100)">
                <axsl:attribute name="id">EUGEN-T10-R043</axsl:attribute>
                <axsl:attribute name="flag">fatal</axsl:attribute>
                <axsl:attribute name="location">

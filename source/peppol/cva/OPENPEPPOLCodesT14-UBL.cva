@@ -50,7 +50,7 @@
     <Context item="@unitCode" values="UnitCode" mark="fatal">
       <Message>[OP-T14-R006]-Unit code MUST be coded according to the UN/ECE Recommendation 20</Message>
     </Context>
-    <Context item="@schemeID" scope="cac:Item/cac:StandardItemIdentification/cbc:ID" values="StandardItemIdentifier" mark="fatal">
+    <Context item="@schemeID" scope="cac:Item/cac:StandardItemIdentification/cbc:ID" values="CommodityCode" mark="fatal">
       <Message>[OP-T14-R007]-A standard item identifier scheme MUST be coded according to the list Item Identifier Scheme ID defined by PEPPOL</Message>
     </Context>
     <Context item="@schemeID" scope="cbc:CompanyID" values="PartyIdentifierScheme" mark="fatal">

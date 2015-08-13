@@ -53,7 +53,7 @@
     <Context item="@unitCode" values="UnitCode" mark="fatal">
       <Message>[OP-T76-R006]-Unit code MUST be coded according to the UN/ECE Recommendation 20 (2009)</Message>
     </Context>
-    <Context item="@currencyID" values="currencyCodeList" mark="fatal">
+    <Context item="@currencyID" values="CurrencyCodeList" mark="fatal">
       <Message>[OP-T76-R007]-CurrencyID MUST be coded using ISO code list 4217</Message>
     </Context>
     <Context item="" scope="cac:TaxCategory/cbc:ID" values="TaxCategoryID" mark="fatal">

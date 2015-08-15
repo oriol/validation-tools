@@ -22,7 +22,7 @@
   <param name="BII2-T40-R030" value="(cac:TenderingTerms/cbc:AwardingMethodTypeCode = '2') and (cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriteria)"/>
   <param name="BII2-T40-R032" value="((cac:TenderingProcess/cbc:ProcedureCode = 3) or (cac:TenderingProcess/cbc:ProcedureCode = 6)) and (cac:ProcessJustification/cbc:ProcessReason) "/>
   <param name="BII2-T40-R033" value="(//cbc:ProcedureCode)"/>
-  <param name="BII2-T40-R034" value="false"/>
+  <param name="BII2-T40-R034" value="false()"/>
   <param name="Call_for_tenders" value="/ubl:CallForTenders"/>
   <param name="contracting_authority" value="//cac:ContractingParty"/>
   <param name="Procurement_Project" value="//cac:ProcurementProject"/>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	UBL syntax binding to the T42   
         	Author: Oriol Bausà
@@ -47,7 +47,7 @@
   <param name="BIIRULE-T42-R008" value="(cac:PartyName/cbc:Name) or (cac:PartyIdentification/cbc:ID)"/>
   <param name="BIIRULE-T42-R010" value="(cbc:ID)"/>
   <param name="BIIRULE-T42-R012" value="(cac:ResolutionDocumentReference/cbc:ID)"/>
-  <param name="BIIRULE-T42-R013" value="false"/>
+  <param name="BIIRULE-T42-R013" value="false()"/>
   <param name="Sending_Party" value="//cac:SenderParty"/>
   <param name="Receiving_Party" value="//cac:ReceiverParty"/>
   <param name="qualification_receipt_notification" value="/ubl:TendererQualificationResponse"/>

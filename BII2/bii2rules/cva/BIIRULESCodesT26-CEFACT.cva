@@ -34,7 +34,7 @@
     <ValueList xml:id="StatusReasonCode" uri="../gc/StatusReasonCode.gc"/>
   </ValueLists>
   <Contexts>
-    <Context item="" values="PaymentMeansCode" mark="fatal">
+    <Context item="ram:TypeCode" scope="ram:SpecifiedCITradeSettlementPaymentMeans" values="PaymentMeansCode" mark="fatal">
       <Message>[CL-T26-R001]-Payment means in an statement MUST be coded using CEFACT code list 4461</Message>
     </Context>
   </Contexts>

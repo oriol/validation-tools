@@ -45,10 +45,10 @@
     <Context item="@mimeCode" values="BinaryObjectMimeCode" mark="fatal">
       <Message>[CL-T41-R002]-For Mime code in attribute use MIMEMediaType.</Message>
     </Context>
-    <Context item="false" values="FinancialCapabilityTypeCode" mark="warning">
+    <Context item="false()" values="FinancialCapabilityTypeCode" mark="warning">
       <Message>[CL-T41-R003]-Financial capabilities SHOULD be defined using the CEN BII code list</Message>
     </Context>
-    <Context item="false" values="TechnicalCapabilityTypeCode" mark="warning">
+    <Context item="false()" values="TechnicalCapabilityTypeCode" mark="warning">
       <Message>[CL-T41-R004]-Technical capabilities SHOULD be defined using the CEN BII code list</Message>
     </Context>
   </Contexts>

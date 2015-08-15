@@ -554,6 +554,22 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="((//ram:TaxTotalAmount) and (round(sum(ram:SubtotalCalculatedCITradeTax/ram:BasisAmount) *10 * 10) div 100 = number(//ram:TaxBasisTotalAmount))) or  not((ram:TaxTotalAmount))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((//ram:TaxTotalAmount) and (round(sum(ram:SubtotalCalculatedCITradeTax/ram:BasisAmount) *10 * 10) div 100 = number(//ram:TaxBasisTotalAmount))) or not((ram:TaxTotalAmount))">
+               <xsl:attribute name="id">BII2-T14-R058</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[BII2-T14-R058]-Credit Note total without VAT MUST be equal to the sum of VAT category taxable amounts</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
@@ -862,22 +878,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="((//ram:TaxTotalAmount) and (round(sum(ram:SubtotalCalculatedCITradeTax/ram:BasisAmount) *10 * 10) div 100 = number(//ram:TaxBasisTotalAmount))) or  not((ram:TaxTotalAmount))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((//ram:TaxTotalAmount) and (round(sum(ram:SubtotalCalculatedCITradeTax/ram:BasisAmount) *10 * 10) div 100 = number(//ram:TaxBasisTotalAmount))) or not((ram:TaxTotalAmount))">
-               <xsl:attribute name="id">BII2-T14-R058</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[BII2-T14-R058]-Credit Note total without VAT MUST be equal to the sum of VAT category taxable amounts</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
@@ -1032,6 +1032,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
+      <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M7"/>
    </xsl:template>
 
 	  <!--RULE -->

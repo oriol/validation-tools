@@ -11,12 +11,12 @@
   <param name="BII2-T04-R009" value="(//ram:CIOHSupplyChainTradeTransaction/ram:ApplicableCIOHSupplyChainTradeSettlement/ram:OrderCurrencyCode)"/>
   <param name="BII2-T04-R010" value="number(//ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity) &gt;= 0"/>
   <param name="BII2-T04-R011" value="number(//ram:NetPriceProductCITradePrice/ram:ChargeAmount) &gt;= 0"/>
-  <param name="BII2-T04-R012" value="true"/>
+  <param name="BII2-T04-R012" value="true()"/>
   <param name="BII2-T04-R013" value="number(ram:LineTotalAmount) &gt;= 0"/>
   <param name="BII2-T04-R014" value="number(//ram:SpecifiedCIIHTradeSettlementMonetarySummation/ram:LineTotalAmount) = number(round(sum(//ram:IncludedCIILSupplyChainTradeLineItem/*/*/ram:LineTotalAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T04-R015" value="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&quot;false&quot;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount)"/>
   <param name="BII2-T04-R016" value="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&quot;true&quot;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount)"/>
-  <param name="BII2-T04-R017" value="true"/>
+  <param name="BII2-T04-R017" value="true()"/>
   <param name="BII2-T04-R018" value="number(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:TaxTotalAmount) =  number(round(sum(//ram:SpecifiedCIOLSupplyChainTradeSettlement/*/ram:CalculatedAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T04-R019" value="(ram:ID)"/>
   <param name="BII2-T04-R020" value="(ram:Description)"/>

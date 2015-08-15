@@ -34,13 +34,13 @@
     <ValueList xml:id="StatusReasonCode" uri="../gc/StatusReasonCode.gc"/>
   </ValueLists>
   <Contexts>
-    <Context item="" values="ActionCode" mark="fatal">
+    <Context item="false()" values="ActionCode" mark="fatal">
       <Message>[CL-T19-R001]-The action code for a catalogue line MUST be Add, Update or Delete if present</Message>
     </Context>
-    <Context item="" values="BinaryObjectMimeCode" mark="fatal">
+    <Context item="ram:MIMECode" scope="ram:AttachedSpecifiedBinaryFile" values="BinaryObjectMimeCode" mark="fatal">
       <Message>[CL-T19-R002]-For Mime code in attribute use MIMEMediaType.</Message>
     </Context>
-    <Context item="" values="TaxCategoryID" mark="fatal">
+    <Context item="ram:TypeCode" scope="ram:ApplicableCITradeTax" values="TaxCategoryID" mark="fatal">
       <Message>[CL-T19-R004]-Tax categories MUST be coded using UN/ECE 5305 code list</Message>
     </Context>
   </Contexts>

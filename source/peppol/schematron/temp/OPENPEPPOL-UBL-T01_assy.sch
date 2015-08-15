@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:Order-2" queryBinding="xslt2">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:Order-2" queryBinding="xslt2">
   <title>OPENPEPPOL  T01 bound to UBL</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
   <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
@@ -25,7 +25,7 @@
     <assert test="@schemeID" flag="fatal" id="EUGEN-T01-R011">[EUGEN-T01-R011]-An endpoint identifier MUST have a scheme identifier attribute</assert>
   </rule>
   <rule context="//cbc:OrderTypeCode">
-    <assert test="@listID='UNCL1001' or @listID)='UNCLD1001' " flag="fatal" id="EUGEN-T01-R013">[EUGEN-T01-R013]-An order type code MUST have a list identifier attribute “UNCL1001”</assert>
+    <assert test="@listID='UNCL1001' or @listID='UNCLD1001' " flag="fatal" id="EUGEN-T01-R013">[EUGEN-T01-R013]-An order type code MUST have a list identifier attribute “UNCL1001”</assert>
   </rule>
   <rule context="//cac:PartyIdentification/cbc:ID">
     <assert test="@schemeID" flag="fatal" id="EUGEN-T01-R012">[EUGEN-T01-R012]-A party identifier MUST have a scheme identifier attribute</assert>

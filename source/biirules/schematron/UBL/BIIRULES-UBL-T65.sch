@@ -11,7 +11,7 @@
   <param name="BII2-T65-R007" value="(cac:PartyName/cbc:Name) or (cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T65-R008" value="(cac:PartyName/cbc:Name) or (cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T65-R010" value="(cac:DocumentReference)"/>
-  <param name="BII2-T65-R011" value="false"/>
+  <param name="BII2-T65-R011" value="false()"/>
   <param name="Sending_Party" value="//cac:SenderParty"/>
   <param name="Receiving_Party" value="//cac:ReceiverParty"/>
   <param name="notice_publication_response" value="/ubl:ApplicationResponse"/>

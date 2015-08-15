@@ -34,7 +34,7 @@
     <ValueList xml:id="StatusReasonCode" uri="../gc/StatusReasonCode.gc"/>
   </ValueLists>
   <Contexts>
-    <Context item="false" values="TenderTypeCode" mark="fatal">
+    <Context item="false()" values="TenderTypeCode" mark="fatal">
       <Message>[CL-T44-R001]-The tender type code MUST be one of the following:
 
 - Technical Tender

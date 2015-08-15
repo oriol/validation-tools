@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	UBL syntax binding to the T41   
         	Author: Oriol Bausà
@@ -50,8 +50,8 @@
   <param name="BII2-T41-R008" value="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T41-R010" value="(cac:TendererPartyQualification/cac:MainQualifyingParty)"/>
   <param name="BII2-T41-R011" value="(cac:MainQualifyingParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName) and ((cac:AdditionalQualifyingParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName)or not(cac:AdditionalQualifyingParty))"/>
-  <param name="BII2-T41-R013" value="false"/>
-  <param name="BII2-T41-R014" value="false"/>
+  <param name="BII2-T41-R013" value="false()"/>
+  <param name="BII2-T41-R014" value="false()"/>
   <param name="BII2-T41-R015" value="(cac:MainQualifyingParty/cac:Party/cac:Person/cbc:FamilyName) or not((cac:MainQualifyingParty/cac:Party/cac:Person))"/>
   <param name="Contracting_Authority" value="//cac:ContractingParty"/>
   <param name="qualification_document" value="/ubl:TendererQualification"/>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	CEFACT syntax binding to the T01   
         	Author: Oriol Bausà
@@ -69,12 +69,12 @@
   <param name="BII2-T01-R009" value="(ram:CIOHSupplyChainTradeTransaction/ram:ApplicableCIOHSupplyChainTradeSettlement/ram:OrderCurrencyCode)"/>
   <param name="BII2-T01-R010" value="number(//ram:SpecifiedCIOLSupplyChainTradeDelivery/ram:RequestedQuantity) &gt;= 0"/>
   <param name="BII2-T01-R011" value="number(//ram:NetPriceProductCITradePrice/ram:ChargeAmount) &gt;= 0"/>
-  <param name="BII2-T01-R012" value="false"/>
+  <param name="BII2-T01-R012" value="false()"/>
   <param name="BII2-T01-R013" value="number(ram:LineTotalAmount) &gt;= 0"/>
   <param name="BII2-T01-R014" value="number(//ram:SpecifiedCIIHTradeSettlementMonetarySummation/ram:LineTotalAmount) = number(round(sum(//ram:IncludedCIILSupplyChainTradeLineItem/*/*/ram:LineTotalAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T01-R015" value="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&#34;false&#34;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:AllowanceTotalAmount)"/>
   <param name="BII2-T01-R016" value="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  and //ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount  = (round(sum(//SpecifiedCITradeAllowanceCharge[ram:ChargeIndicator=&#34;true&#34;]/ram:ActualAmount) * 10 * 10) div 100)) or not(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:ChargeTotalAmount)"/>
-  <param name="BII2-T01-R017" value="false"/>
+  <param name="BII2-T01-R017" value="false()"/>
   <param name="BII2-T01-R018" value="(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:TaxTotalAmount and number(//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:TaxTotalAmount) =  number(round(sum(//ram:SpecifiedCIOLSupplyChainTradeSettlement/*/ram:CalculatedAmount) * 10 * 10) div 100)) or not (//ram:SpecifiedCIOHTradeSettlementMonetarySummation/ram:TaxTotalAmount)"/>
   <param name="BII2-T01-R019" value="(ram:ID)"/>
   <param name="BII2-T01-R020" value="(ram:Description)"/>

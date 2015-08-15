@@ -34,10 +34,10 @@
     <ValueList xml:id="StatusReasonCode" uri="../gc/StatusReasonCode.gc"/>
   </ValueLists>
   <Contexts>
-    <Context item="false" values="ActivityTypeCode" mark="warning">
+    <Context item="false()" values="ActivityTypeCode" mark="warning">
       <Message>[CL-T64-R001]-A contracting authority SHOULD have an activity code</Message>
     </Context>
-    <Context item="" values="ContractType" mark="fatal">
+    <Context item="false()" values="ContractType" mark="fatal">
       <Message>[CL-T64-R002]-A procurement project type MUST be one of the following:
 - Works
 - Goods
@@ -45,7 +45,7 @@
 - Public Works Concession
 - Service Concession</Message>
     </Context>
-    <Context item="" values="ContractingBodyType" mark="warning">
+    <Context item="false()" values="ContractingBodyType" mark="warning">
       <Message>[CL-T64-R003]-A contracting authority SHOULD have an contracting type code.</Message>
     </Context>
     <Context item="@schemeID" scope="ram:SpecifiedCITradeProduct/ram:GlobalID" values="CommodityClassificationCode" mark="warning">

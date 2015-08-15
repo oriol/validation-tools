@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	CEFACT syntax binding to the T02   
         	Author: Oriol Bausà
@@ -37,7 +37,7 @@
   <param name="BII2-T02-R005" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T02-R006" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T02-R007" value="//ram:BuyerOrderReferencedCIReferencedDocument/ram:IssuerAssignedID"/>
-  <param name="BII2-T02-R008" value="(ram:CIORHExchangedDocument/ram:ResponseReasonCode = true) and not(ram:CIORHExchangedDocument/ram:IncludedCINote)"/>
+  <param name="BII2-T02-R008" value="(ram:CIORHExchangedDocument/ram:ResponseReasonCode = true()) and not(ram:CIORHExchangedDocument/ram:IncludedCINote)"/>
   <param name="BII2-T02-R009" value="(ram:CIORHExchangedDocument/ram:ID)"/>
   <param name="BII2-T02-R010" value="(ram:CIORHExchangedDocument/ram:IssueDateTime)"/>
   <param name="Customer" value="//ram:BuyerCITradeParty"/>

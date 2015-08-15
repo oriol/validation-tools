@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:cac="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10" xmlns:CEFACT="urn:un:unece:uncefact:data:standard:Tender:8" queryBinding="xslt2">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:cac="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10" xmlns:CEFACT="urn:un:unece:uncefact:data:standard:Tender:8" queryBinding="xslt2">
   <title>BIIRULES  T44 bound to CEFACT</title>
   <ns prefix="udt" uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10"/>
   <ns prefix="ram" uri="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10"/>
@@ -16,12 +16,12 @@
   
   <!--Start pattern based on abstract T44--><pattern id="CEFACT-T44">
   <rule context="/rsm:Tender">
-    <assert test="false" flag="fatal" id="BII2-T44-R001">[BII2-T44-R001]-A tender MUST have a customization identifier</assert>
-    <assert test="false" flag="fatal" id="BII2-T44-R002">[BII2-T44-R002]-A tender MUST have a profile identifier</assert>
+    <assert test="false()" flag="fatal" id="BII2-T44-R001">[BII2-T44-R001]-A tender MUST have a customization identifier</assert>
+    <assert test="false()" flag="fatal" id="BII2-T44-R002">[BII2-T44-R002]-A tender MUST have a profile identifier</assert>
     <assert test="(ram:TenderDocument/ram:ID)" flag="fatal" id="BII2-T44-R003">[BII2-T44-R003]-A tender MUST have a tender identifier</assert>
-    <assert test="false" flag="fatal" id="BII2-T44-R004">[BII2-T44-R004]-A tender MUST have an issuing date</assert>
-    <assert test="false" flag="fatal" id="BII2-T44-R005">[BII2-T44-R005]-A tender MUST have an issuing time</assert>
-    <assert test="false" flag="fatal" id="BII2-T44-R006">[BII2-T44-R006]-A tender MUST have a call for tender reference</assert>
+    <assert test="false()" flag="fatal" id="BII2-T44-R004">[BII2-T44-R004]-A tender MUST have an issuing date</assert>
+    <assert test="false()" flag="fatal" id="BII2-T44-R005">[BII2-T44-R005]-A tender MUST have an issuing time</assert>
+    <assert test="false()" flag="fatal" id="BII2-T44-R006">[BII2-T44-R006]-A tender MUST have a call for tender reference</assert>
     <assert test="(ram:ProcuringOrganization)" flag="fatal" id="BII2-T44-R007">[BII2-T44-R007]-A tender MUST have a contracting authority</assert>
   </rule>
   <rule context="//ram:ProcuringOrganization">
@@ -37,7 +37,7 @@
     <assert test="(ram:SpecificationReference)" flag="warning" id="BII2-T44-R013">[BII2-T44-R013]-Each deliverable offered SHOULD refer to a call for tender requested deliverable through the use of the call for tender reference identifier</assert>
   </rule>
   <rule context="/rsm:Tender">
-    <assert test="false" flag="warning" id="BII2-T44-R014">[BII2-T44-R014]-Each awarding criterion response SHOULD have a call for tender awarding criterion reference identifier</assert>
+    <assert test="false()" flag="warning" id="BII2-T44-R014">[BII2-T44-R014]-Each awarding criterion response SHOULD have a call for tender awarding criterion reference identifier</assert>
   </rule>
   <rule context="/rsm:Tender">
     <assert test="//ram:ProcuringProject/ram:TotalBudgetAmount" flag="fatal" id="BII2-T44-R015">[BII2-T44-R015]-The tender MUST contain the total amount of the tender and applicable taxes. </assert>

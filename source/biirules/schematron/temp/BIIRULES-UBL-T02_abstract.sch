@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	UBL syntax binding to the T02   
         	Author: Oriol Bausà
@@ -37,7 +37,7 @@
   <param name="BII2-T02-R005" value="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T02-R006" value="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>
   <param name="BII2-T02-R007" value="(cac:OrderReference/cbc:ID)"/>
-  <param name="BII2-T02-R008" value="(cbc:AcceptedIndicator = true) and not(cbc:Note)"/>
+  <param name="BII2-T02-R008" value="(cbc:AcceptedIndicator = true()) and not(cbc:Note)"/>
   <param name="BII2-T02-R009" value="(cbc:ID)"/>
   <param name="BII2-T02-R010" value="(cbc:IssueDate)"/>
   <param name="Customer" value="//cac:BuyerCustomerParty"/>

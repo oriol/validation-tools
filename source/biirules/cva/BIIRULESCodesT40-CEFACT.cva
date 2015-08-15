@@ -57,12 +57,12 @@
     <Context item="ram:JudgingCriteriaCode" values="AwardCriterionSpecification" mark="fatal">
       <Message>[CL-T40-R003]-Awarding method MUST be Price or Most Advantageous Tender.</Message>
     </Context>
-    <Context item="false" values="CriterionType" mark="fatal">
+    <Context item="false()" values="CriterionType" mark="fatal">
       <Message>[CL-T40-R004]-Contract award criterion type MUST be one of the following: 
 - Criterion subject to automatic evaluation
 - Criterion subject to human evaluation</Message>
     </Context>
-    <Context item="false" values="ProjectType" mark="fatal">
+    <Context item="false()" values="ProjectType" mark="fatal">
       <Message>[CL-T40-R005]-A procurement contract type MUST be one of the following:
 - Public Contract
 - Establishment of a Framework agreement
@@ -75,7 +75,7 @@
     <Context item="@schemeID" scope="ram:SpecifiedCITradeProduct/ram:GlobalID" values="CommodityClassificationCode" mark="warning">
       <Message>[CL-T40-R006]-Commodity classification SHOULD ONLY be one of UNSPSC, eCl@ss or CPV.</Message>
     </Context>
-    <Context item="" values="EvidenceTypeCode" mark="warning">
+    <Context item="false()" values="EvidenceTypeCode" mark="warning">
       <Message>[CL-T40-R007]-An evidence code SHOULD be one of the described in the CEN BII Codelist</Message>
     </Context>
   </Contexts>

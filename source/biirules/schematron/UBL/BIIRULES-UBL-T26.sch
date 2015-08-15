@@ -17,7 +17,7 @@
   <param name="BII2-T26-R015" value="(cbc:ID)"/>
   <param name="BII2-T26-R016" value="number(cbc:TotalBalanceAmount) = number(round(sum(//cbc:BalanceAmount) * 10 * 10) div 100)"/>
   <param name="BII2-T26-R017" value="(cbc:DocumentCurrencyCode)"/>
-  <param name="BII2-T26-R018" value="false"/>
+  <param name="BII2-T26-R018" value="false()"/>
   <param name="BII2-T26-R019" value="(cbc:BalanceAmount)"/>
   <param name="Statement_Line" value="//cac:StatementLine"/>
   <param name="Supplier_Address" value="//cac:SellerSupplierParty/cac:Party/cac:PostalAddress"/>

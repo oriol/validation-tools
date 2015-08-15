@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	CEFACT syntax binding to the T44   
         	Author: Oriol Bausà
@@ -48,18 +48,18 @@
   <!-- Data Binding parameters -->
   <!-- ======================= -->
   <?DSDL_INCLUDE_START CEFACT/BIIRULES-CEFACT-T44.sch?><pattern is-a="T44" id="CEFACT-T44">
-  <param name="BII2-T44-R001" value="false"/>
-  <param name="BII2-T44-R002" value="false"/>
+  <param name="BII2-T44-R001" value="false()"/>
+  <param name="BII2-T44-R002" value="false()"/>
   <param name="BII2-T44-R003" value="(ram:TenderDocument/ram:ID)"/>
-  <param name="BII2-T44-R004" value="false"/>
-  <param name="BII2-T44-R005" value="false"/>
-  <param name="BII2-T44-R006" value="false"/>
+  <param name="BII2-T44-R004" value="false()"/>
+  <param name="BII2-T44-R005" value="false()"/>
+  <param name="BII2-T44-R006" value="false()"/>
   <param name="BII2-T44-R007" value="(ram:ProcuringOrganization)"/>
   <param name="BII2-T44-R008" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T44-R010" value="(ram:TendererOrganization)"/>
   <param name="BII2-T44-R011" value="(ram:Name) or (ram:ID)"/>
   <param name="BII2-T44-R013" value="(ram:SpecificationReference)"/>
-  <param name="BII2-T44-R014" value="false"/>
+  <param name="BII2-T44-R014" value="false()"/>
   <param name="BII2-T44-R015" value="//ram:ProcuringProject/ram:TotalBudgetAmount"/>
   <param name="Contracting_Authority" value="//ram:ProcuringOrganization"/>
   <param name="tender" value="/rsm:Tender"/>

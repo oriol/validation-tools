@@ -34,28 +34,28 @@
     <ValueList xml:id="StatusReasonCode" uri="../gc/StatusReasonCode.gc"/>
   </ValueLists>
   <Contexts>
-    <Context item="" values="InvoiceTypeCode" mark="fatal">
+    <Context item="ram:TypeCode" scope="ram:CIIHExchangedDocument" values="InvoiceTypeCode" mark="fatal">
       <Message>[CL-T10-R001]-An Invoice MUST be coded with the InvoiceTypeCode code list UNCL D1001 BII2 subset</Message>
     </Context>
-    <Context item="" values="CurrencyCodeList" mark="fatal">
+    <Context item="ram:InvoiceCurrencyCode" scope="ram:CIIHSupplyChainTradeTransaction/ram:ApplicableCIIHSupplyChainTradeSettlement" values="CurrencyCodeList" mark="fatal">
       <Message>[CL-T10-R002]-DocumentCurrencyCode MUST be coded using ISO code list 4217</Message>
     </Context>
-    <Context item="" values="CurrencyCodeList" mark="fatal">
+    <Context item="@currencyID" values="CurrencyCodeList" mark="fatal">
       <Message>[CL-T10-R003]-currencyID MUST be coded using ISO code list 4217</Message>
     </Context>
-    <Context item="" values="CountryCodeList" mark="fatal">
+    <Context item="ram:CountryID" values="CountryCodeList" mark="fatal">
       <Message>[CL-T10-R004]-Country codes in an invoice MUST be coded using ISO code list 3166-1</Message>
     </Context>
-    <Context item="" values="PaymentMeansCode" mark="fatal">
+    <Context item="ram:TypeCode" scope="ram:CIIHSupplyChainTradeTransaction/ram:ApplicableCIIHSupplyChainTradeSettlement/ram:SpecifiedCITradeSettlementPaymentMeans" values="PaymentMeansCode" mark="fatal">
       <Message>[CL-T10-R006]-Payment means in an invoice MUST be coded using UNCL 4461 BII2 subset</Message>
     </Context>
-    <Context item="" values="TaxCategoryID" mark="fatal">
+    <Context item="ram:TypeCode" scope="ram:CIIHSupplyChainTradeTransaction/ram:ApplicableCIIHSupplyChainTradeSettlement/ram:ApplicableCITradeTax" values="TaxCategoryID" mark="fatal">
       <Message>[CL-T10-R007]-Invoice tax categories MUST be coded using UNCL 5305 code list BII2 subset</Message>
     </Context>
-    <Context item="" values="BinaryObjectMimeCode" mark="fatal">
+    <Context item="ram:MIMECode" scope="ram:AttachedSpecifiedBinaryFile" values="BinaryObjectMimeCode" mark="fatal">
       <Message>[CL-T10-R008]-For Mime code in attribute use MIMEMediaType.</Message>
     </Context>
-    <Context item="" values="AllowanceChargeReasonCode" mark="warning">
+    <Context item="ram:ReasonCode" scope="ram:SpecifiedCITradeAllowanceCharge" values="AllowanceChargeReasonCode" mark="warning">
       <Message>[CL-T10-R010]-Coded allowance and charge reasons SHOULD belong to the UNCL 4465 code list BII2 subset</Message>
     </Context>
   </Contexts>

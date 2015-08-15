@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:Statement-2" queryBinding="xslt2">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:Statement-2" queryBinding="xslt2">
   <title>BIIRULES  T26 bound to UBL</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
   <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
@@ -41,7 +41,7 @@
   </rule>
   <rule context="//cac:StatementLine">
     <assert test="(cbc:ID)" flag="fatal" id="BII2-T26-R015">[BII2-T26-R015]-Each statement line MUST have a statement line identifier that is unique within the statement</assert>
-    <assert test="false" flag="fatal" id="BII2-T26-R018">[BII2-T26-R018]-Each statement line MUST have a statement line date</assert>
+    <assert test="false()" flag="fatal" id="BII2-T26-R018">[BII2-T26-R018]-Each statement line MUST have a statement line date</assert>
     <assert test="(cbc:BalanceAmount)" flag="fatal" id="BII2-T26-R019">[BII2-T26-R019]-Each statement line MUST contain an amount</assert>
   </rule>
   <rule context="//cac:SellerSupplierParty">

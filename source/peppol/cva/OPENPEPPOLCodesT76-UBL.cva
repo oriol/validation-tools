@@ -41,7 +41,7 @@
     <Context item="cbc:LineStatusCode" scope="cac:LineItem" values="OrderResponseCode" mark="fatal">
       <Message>[OP-T76-R002]-An order response line status code MUST be coded according to the code list 1225.</Message>
     </Context>
-    <Context item="cbc:DocumentCurrencyCode" values="currencyCodeList" mark="fatal">
+    <Context item="cbc:DocumentCurrencyCode" values="CurrencyCodeList" mark="fatal">
       <Message>[OP-T76-R003]-DocumentCurrencyCode MUST be coded using ISO code list 4217</Message>
     </Context>
     <Context item="@schemeID" scope="cbc:EndpointID" values="PartyIdentifierScheme" mark="fatal">

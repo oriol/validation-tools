@@ -5,7 +5,7 @@
 #  Copyright (C) - Invinet Sistemes 2003 - http://www.invinet.org
 
 # generate genericodes and cva for every Transaction in OPENPEPPOL
-#e2gc-cva.rb businessrules/OpenPEPPOL-CodeLists-v01.ods OPENPEPPOL gc cva
+e2gc-cva.rb businessrules/OpenPEPPOL-CodeLists-v01.ods OPENPEPPOL gc cva
 
 echo "========================="
 echo "Create schematron for T10"

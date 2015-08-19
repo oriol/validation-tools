@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- 
+<?xml version="1.0" encoding="UTF-8"?><!-- 
 
         	UBL syntax binding to the T01   
         	Author: Oriol Bausà
@@ -44,7 +44,7 @@
   <?DSDL_INCLUDE_START UBL/OPENPEPPOL-UBL-T01.sch?><pattern is-a="T01" id="UBL-T01">
   <param name="EUGEN-T01-R011" value="@schemeID"/>
   <param name="EUGEN-T01-R012" value="@schemeID"/>
-  <param name="EUGEN-T01-R013" value="@listID='UNCL1001' or @listID)='UNCLD1001' "/>
+  <param name="EUGEN-T01-R013" value="@listID='UNCL1001' or @listID='UNCLD1001' "/>
   <param name="EUGEN-T01-R014" value="@listID='ISO4217'"/>
   <param name="EUGEN-T01-R015" value="@listID = 'ISO3166-1:Alpha2'"/>
   <param name="EUGEN-T01-R016" value="not(attribute::unitCode) or (attribute::unitCode and attribute::unitCodeListID = 'UNECERec20')"/>

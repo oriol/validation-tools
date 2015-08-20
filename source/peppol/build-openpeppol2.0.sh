@@ -10,14 +10,14 @@ e2gc-cva.rb businessrules/OpenPEPPOL-CodeLists-v01.ods OPENPEPPOL gc cva
 echo "========================="
 echo "Create schematron for T10"
 create_code_rules.sh OPENPEPPOLCodesT10-UBL
-e2sch.rb businessrules/OpenPEPPOL-T10-BusinessRules-v02.ods schematron OPENPEPPOL
+e2sch.rb businessrules/OpenPEPPOL-T10-BusinessRules-v03.ods schematron OPENPEPPOL
 create_xslt2.0_from_sch.sh  OPENPEPPOL-UBL-T10
 
 
 echo "========================="
 echo "Create schematron for T14"
 create_code_rules.sh OPENPEPPOLCodesT14-UBL
-e2sch.rb businessrules/OpenPEPPOL-T14-BusinessRules-v02.ods schematron OPENPEPPOL
+e2sch.rb businessrules/OpenPEPPOL-T14-BusinessRules-v03.ods schematron OPENPEPPOL
 create_xslt2.0_from_sch.sh  OPENPEPPOL-UBL-T14
 
 echo "========================="

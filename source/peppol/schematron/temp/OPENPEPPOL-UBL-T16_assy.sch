@@ -27,8 +27,8 @@
   <rule context="//cbc:EndpointID">
     <assert test="@schemeID" flag="fatal" id="EUGEN-T16-R001">[EUGEN-T16-R001]-An endpoint identifier MUST have a scheme identifier attribute.</assert>
   </rule>
-  <rule context="/ubl:DespatchAdvice">
-    <assert test="(//cac:DespatchSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID) and (//cac:DeliveryCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID)" flag="fatal" id="EUGEN-T16-R002">[EUGEN-T16-R002]-A party identifier MUST have a scheme identifier attribute.</assert>
+  <rule context="//cac:Party">
+    <assert test="cac:PartyIdentification/cbc:ID/@schemeID" flag="fatal" id="EUGEN-T16-R002">[EUGEN-T16-R002]-A party identifier MUST have a scheme identifier attribute.</assert>
   </rule>
   <rule context="/cac:Country">
     <assert test="(cbc:IdentificationCode/@listID='ISO3166-1:Alpha2')" flag="fatal" id="EUGEN-T16-R003">[EUGEN-T16-R003]-A country identification code MUST have a list identifier attribute ISO3166-1:Alpha2.</assert>

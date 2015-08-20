@@ -29,7 +29,7 @@
   <rule context="$endpoint">
     <assert test="$EUGEN-T16-R001" flag="fatal" id="EUGEN-T16-R001">[EUGEN-T16-R001]-An endpoint identifier MUST have a scheme identifier attribute.</assert>
   </rule>
-  <rule context="$despatch_advice">
+  <rule context="$party">
     <assert test="$EUGEN-T16-R002" flag="fatal" id="EUGEN-T16-R002">[EUGEN-T16-R002]-A party identifier MUST have a scheme identifier attribute.</assert>
   </rule>
   <rule context="$country">
@@ -40,7 +40,7 @@
   <!-- ======================= -->
   <?DSDL_INCLUDE_START UBL/OPENPEPPOL-UBL-T16.sch?><pattern is-a="T16" id="UBL-T16">
   <param name="EUGEN-T16-R001" value="@schemeID"/>
-  <param name="EUGEN-T16-R002" value="(//cac:DespatchSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID) and (//cac:DeliveryCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID)"/>
+  <param name="EUGEN-T16-R002" value="cac:PartyIdentification/cbc:ID/@schemeID"/>
   <param name="EUGEN-T16-R003" value="(cbc:IdentificationCode/@listID='ISO3166-1:Alpha2')"/>
   <param name="EUGEN-T16-R004" value="not(attribute::unitCode) or (attribute::unitCode and attribute::unitCodeListID = 'UNECERec20')"/>
   <param name="EUGEN-T16-R005" value="@listID = 'UNCL8273'"/>
@@ -48,7 +48,7 @@
   <param name="unit_code" value="//*[contains(name(),'Quantity')]"/>
   <param name="undg_code" value="cbc:UNDGCode"/>
   <param name="transport_handling_unit_type" value="cbc:TransportHandlingUnitTypeCode"/>
-  <param name="despatch_advice" value="/ubl:DespatchAdvice"/>
+  <param name="party" value="//cac:Party"/>
   <param name="country" value="/cac:Country"/>
   <param name="endpoint" value="//cbc:EndpointID"/>
 </pattern><?DSDL_INCLUDE_END UBL/OPENPEPPOL-UBL-T16.sch?>

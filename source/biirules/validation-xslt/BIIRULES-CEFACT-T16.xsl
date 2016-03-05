@@ -1,41 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:saxon="http://saxon.sf.net/"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10"
                 xmlns:ram="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10"
                 xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryDespatchAdvice:3"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-<xsl:param name="archiveDirParameter" tunnel="no"/>
-   <xsl:param name="archiveNameParameter" tunnel="no"/>
-   <xsl:param name="fileNameParameter" tunnel="no"/>
-   <xsl:param name="fileDirParameter" tunnel="no"/>
+   <xsl:param name="archiveDirParameter"/>
+   <xsl:param name="archiveNameParameter"/>
+   <xsl:param name="fileNameParameter"/>
+   <xsl:param name="fileDirParameter"/>
+   <xsl:variable name="document-uri">
+      <xsl:value-of select="document-uri(/)"/>
+   </xsl:variable>
 
    <!--PHASES-->
 
 
-<!--PROLOG-->
-<xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" method="xml"
+   <!--PROLOG-->
+   <xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+               method="xml"
                omit-xml-declaration="no"
                standalone="yes"
                indent="yes"/>
 
-   <!--XSD TYPES-->
+   <!--XSD TYPES FOR XSLT2-->
 
 
-<!--KEYS AND FUCNTIONS-->
+   <!--KEYS AND FUNCTIONS-->
 
 
-<!--DEFAULT RULES-->
+   <!--DEFAULT RULES-->
 
 
-<!--MODE: SCHEMATRON-FULL-PATH-->
-<!--This mode can be used to generate an ugly though full XPath for locators-->
-<xsl:template match="*" mode="schematron-get-full-path">
+   <!--MODE: SCHEMATRON-SELECT-FULL-PATH-->
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-select-full-path">
+      <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+   </xsl:template>
+
+   <!--MODE: SCHEMATRON-FULL-PATH-->
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-get-full-path">
       <xsl:apply-templates select="parent::*" mode="schematron-get-full-path"/>
       <xsl:text>/</xsl:text>
       <xsl:choose>
@@ -73,8 +84,8 @@
    </xsl:template>
 
    <!--MODE: SCHEMATRON-FULL-PATH-2-->
-<!--This mode can be used to generate prefixed XPath for humans-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-2">
+   <!--This mode can be used to generate prefixed XPath for humans-->
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-2">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -89,9 +100,9 @@
       </xsl:if>
    </xsl:template>
    <!--MODE: SCHEMATRON-FULL-PATH-3-->
-<!--This mode can be used to generate prefixed XPath for humans 
+   <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-3">
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -107,7 +118,7 @@
    </xsl:template>
 
    <!--MODE: GENERATE-ID-FROM-PATH -->
-<xsl:template match="/" mode="generate-id-from-path"/>
+   <xsl:template match="/" mode="generate-id-from-path"/>
    <xsl:template match="text()" mode="generate-id-from-path">
       <xsl:apply-templates select="parent::*" mode="generate-id-from-path"/>
       <xsl:value-of select="concat('.text-', 1+count(preceding-sibling::text()), '-')"/>
@@ -131,7 +142,7 @@
    </xsl:template>
 
    <!--MODE: GENERATE-ID-2 -->
-<xsl:template match="/" mode="generate-id-2">U</xsl:template>
+   <xsl:template match="/" mode="generate-id-2">U</xsl:template>
    <xsl:template match="*" mode="generate-id-2" priority="2">
       <xsl:text>U</xsl:text>
       <xsl:number level="multiple" count="*"/>
@@ -150,11 +161,13 @@
       <xsl:text>_</xsl:text>
       <xsl:value-of select="translate(name(),':','.')"/>
    </xsl:template>
-   <!--Strip characters--><xsl:template match="text()" priority="-1"/>
+   <!--Strip characters-->
+   <xsl:template match="text()" priority="-1"/>
 
-   <!--SCHEMA METADATA-->
-<xsl:template match="/">
-      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="BIIRULES  T16 bound to CEFACT"
+   <!--SCHEMA SETUP-->
+   <xsl:template match="/">
+      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                              title="BIIRULES  T16 bound to CEFACT"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -162,7 +175,8 @@
 		 <xsl:value-of select="$fileNameParameter"/>  
 		 <xsl:value-of select="$fileDirParameter"/>
          </xsl:comment>
-         <svrl:ns-prefix-in-attribute-values uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" prefix="udt"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10"
+                                             prefix="udt"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10"
                                              prefix="ram"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:un:unece:uncefact:data:standard:CrossIndustryDespatchAdvice:3"
@@ -180,17 +194,18 @@
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">BIIRULES  T16 bound to CEFACT</svrl:text>
+   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">BIIRULES  T16 bound to CEFACT</svrl:text>
 
    <!--PATTERN CEFACT-T16-->
 
 
-	<!--RULE -->
-<xsl:template match="//ram:ShipToCITradeParty" priority="1005" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//ram:ShipToCITradeParty"/>
+	  <!--RULE -->
+   <xsl:template match="//ram:ShipToCITradeParty" priority="1005" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//ram:ShipToCITradeParty"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:Name) and (ram:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(ram:Name) and (ram:ID)">
@@ -207,12 +222,12 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="/rsm:CrossIndustryDespatchAdvice" priority="1004" mode="M5">
+   <xsl:template match="/rsm:CrossIndustryDespatchAdvice" priority="1004" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="/rsm:CrossIndustryDespatchAdvice"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:CIExchangedDocumentContext/ram:GuidelineSpecifiedCIDocumentContextParameter/ram:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -228,7 +243,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:CIExchangedDocumentContext/ram:BusinessProcessSpecifiedCIDocumentContextParameter/ram:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -244,7 +259,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:HeaderCIDDHExchangedDocument/ram:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -260,7 +275,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:HeaderCIDDHExchangedDocument/ram:IssueDateTime)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -276,7 +291,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:SpecifiedCIDDHSupplyChainTradeTransaction/ram:ApplicableCIDDHSupplyChainTradeAgreement/ram:BuyerOrderReferencedCIReferencedDocument/ram:IssuerAssignedID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -292,10 +307,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(//ram:ShipFromCITradeParty)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(//ram:ShipFromCITradeParty)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(//ram:ShipFromCITradeParty)">
                <xsl:attribute name="id">BII2-T16-R006</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -307,10 +323,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(//ram:ShipToCITradeParty)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(//ram:ShipToCITradeParty)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(//ram:ShipToCITradeParty)">
                <xsl:attribute name="id">BII2-T16-R008</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -322,7 +339,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:IncludedCIDDLSupplyChainTradeLineItem"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -340,12 +357,14 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//ram:IncludedCIDDLSupplyChainTradeLineItem" priority="1003" mode="M5">
+   <xsl:template match="//ram:IncludedCIDDLSupplyChainTradeLineItem"
+                 priority="1003"
+                 mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//ram:IncludedCIDDLSupplyChainTradeLineItem"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:AssociatedCIDDLDocumentLineDocument/ram:LineID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -361,7 +380,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:SpecifiedCITradeProduct/ram:Name or //ram:SpecifiedCITradeProduct/ram:SellerAssignedID or //ram:SpecifiedCITradeProduct/ram:GlobalID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -377,7 +396,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:SpecifiedCIDDLSupplyChainTradeDelivery/ram:ProductUnitQuantity"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -393,7 +412,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="number(//ram:SpecifiedCIDDLSupplyChainTradeDelivery/ram:ProductUnitQuantity) &gt;= 0"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -409,7 +428,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:SpecifiedCIDDLSupplyChainTradeDelivery/ram:ProductUnitQuantity/@unitCode"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -425,7 +444,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="false()"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="false()">
@@ -442,12 +461,14 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//ram:SpecifiedCIDDLLogisticsPackage" priority="1002" mode="M5">
+   <xsl:template match="//ram:SpecifiedCIDDLLogisticsPackage"
+                 priority="1002"
+                 mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//ram:SpecifiedCIDDLLogisticsPackage"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="//ram:SpecifiedCIDDLLogisticsPackage/ram:ID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -465,11 +486,12 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//ram:ShipFromCITradeParty" priority="1001" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//ram:ShipFromCITradeParty"/>
+   <xsl:template match="//ram:ShipFromCITradeParty" priority="1001" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//ram:ShipFromCITradeParty"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(ram:Name) and (ram:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(ram:Name) and (ram:ID)">
@@ -486,12 +508,12 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="/rsm:CrossIndustryDespatchAdvice" priority="1000" mode="M5">
+   <xsl:template match="/rsm:CrossIndustryDespatchAdvice" priority="1000" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="/rsm:CrossIndustryDespatchAdvice"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(//ram:SpecifiedCITradeProduct/ram:GlobalID/@schemeID) or not(//ram:SpecifiedCITradeProduct/ram:GlobalID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"

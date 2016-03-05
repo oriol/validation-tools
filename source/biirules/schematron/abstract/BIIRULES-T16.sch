@@ -1,6 +1,6 @@
-<!-- Schematron rules generated automatically. -->
+<!-- Schematron rules generated automatically by Validex Generator Midran ltd -->
 <!-- Abstract rules for T16 -->
-<!-- (2009). Invinet Sistemes -->
+<!-- Timestamp: 2016-03-05 16:03:02 +0100 -->
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="T16">
   <rule context="$Consignee_Party">
     <assert test="$BII2-T16-R009" flag="warning" id="BII2-T16-R009">[BII2-T16-R009]-A consignee party SHOULD have the party name or a party identifier</assert>

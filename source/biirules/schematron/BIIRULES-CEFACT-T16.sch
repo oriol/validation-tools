@@ -3,7 +3,7 @@
 
         	CEFACT syntax binding to the T16   
         	Author: Oriol Bausà
-
+            Timestamp: 2016-03-05 16:03:03 +0100
      -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:cac="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10" xmlns:CEFACT="urn:un:unece:uncefact:data:standard:CrossIndustryDespatchAdvice:3" queryBinding="xslt2">
   <title>BIIRULES  T16 bound to CEFACT</title>

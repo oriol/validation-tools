@@ -2,7 +2,7 @@
 
         	UBL syntax binding to the T16   
         	Author: Oriol Bausà
-
+            Timestamp: 2016-03-05 16:00:39 +0100
      --><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" queryBinding="xslt2">
   <title>OPENPEPPOL  T16 bound to UBL</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
@@ -35,20 +35,24 @@
   <rule context="$country">
     <assert test="$EUGEN-T16-R003" flag="fatal" id="EUGEN-T16-R003">[EUGEN-T16-R003]-A country identification code MUST have a list identifier attribute ISO3166-1:Alpha2.</assert>
   </rule>
+  <rule context="$despatch_advice_Line">
+    <assert test="$EUGEN-T16-R007" flag="fatal" id="EUGEN-T16-R007">[EUGEN-T16-R007]-Each despatch advice line MUST have a delivered quantity</assert>
+  </rule>
 </pattern><?DSDL_INCLUDE_END abstract/OPENPEPPOL-T16.sch?>
   <!-- Data Binding parameters -->
   <!-- ======================= -->
   <?DSDL_INCLUDE_START UBL/OPENPEPPOL-UBL-T16.sch?><pattern is-a="T16" id="UBL-T16">
   <param name="EUGEN-T16-R001" value="@schemeID"/>
-  <param name="EUGEN-T16-R002" value="cac:PartyIdentification/cbc:ID/@schemeID"/>
+  <param name="EUGEN-T16-R002" value="cbc:ID/@schemeID"/>
   <param name="EUGEN-T16-R003" value="(cbc:IdentificationCode/@listID='ISO3166-1:Alpha2')"/>
   <param name="EUGEN-T16-R004" value="not(attribute::unitCode) or (attribute::unitCode and attribute::unitCodeListID = 'UNECERec20')"/>
   <param name="EUGEN-T16-R005" value="@listID = 'UNCL8273'"/>
   <param name="EUGEN-T16-R006" value="@listID = 'UNECERec21'"/>
+  <param name="EUGEN-T16-R007" value="(cbc:DeliveredQuantity)"/>
   <param name="unit_code" value="//*[contains(name(),'Quantity')]"/>
   <param name="undg_code" value="cbc:UNDGCode"/>
   <param name="transport_handling_unit_type" value="cbc:TransportHandlingUnitTypeCode"/>
-  <param name="party" value="//cac:Party"/>
+  <param name="party" value="//cac:PartyIdentification"/>
   <param name="country" value="/cac:Country"/>
   <param name="endpoint" value="//cbc:EndpointID"/>
 </pattern><?DSDL_INCLUDE_END UBL/OPENPEPPOL-UBL-T16.sch?>

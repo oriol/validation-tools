@@ -1,41 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:saxon="http://saxon.sf.net/"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                 xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-<xsl:param name="archiveDirParameter" tunnel="no"/>
-   <xsl:param name="archiveNameParameter" tunnel="no"/>
-   <xsl:param name="fileNameParameter" tunnel="no"/>
-   <xsl:param name="fileDirParameter" tunnel="no"/>
+   <xsl:param name="archiveDirParameter"/>
+   <xsl:param name="archiveNameParameter"/>
+   <xsl:param name="fileNameParameter"/>
+   <xsl:param name="fileDirParameter"/>
+   <xsl:variable name="document-uri">
+      <xsl:value-of select="document-uri(/)"/>
+   </xsl:variable>
 
    <!--PHASES-->
 
 
-<!--PROLOG-->
-<xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" method="xml"
+   <!--PROLOG-->
+   <xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+               method="xml"
                omit-xml-declaration="no"
                standalone="yes"
                indent="yes"/>
 
-   <!--XSD TYPES-->
+   <!--XSD TYPES FOR XSLT2-->
 
 
-<!--KEYS AND FUCNTIONS-->
+   <!--KEYS AND FUNCTIONS-->
 
 
-<!--DEFAULT RULES-->
+   <!--DEFAULT RULES-->
 
 
-<!--MODE: SCHEMATRON-FULL-PATH-->
-<!--This mode can be used to generate an ugly though full XPath for locators-->
-<xsl:template match="*" mode="schematron-get-full-path">
+   <!--MODE: SCHEMATRON-SELECT-FULL-PATH-->
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-select-full-path">
+      <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+   </xsl:template>
+
+   <!--MODE: SCHEMATRON-FULL-PATH-->
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-get-full-path">
       <xsl:apply-templates select="parent::*" mode="schematron-get-full-path"/>
       <xsl:text>/</xsl:text>
       <xsl:choose>
@@ -73,8 +84,8 @@
    </xsl:template>
 
    <!--MODE: SCHEMATRON-FULL-PATH-2-->
-<!--This mode can be used to generate prefixed XPath for humans-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-2">
+   <!--This mode can be used to generate prefixed XPath for humans-->
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-2">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -89,9 +100,9 @@
       </xsl:if>
    </xsl:template>
    <!--MODE: SCHEMATRON-FULL-PATH-3-->
-<!--This mode can be used to generate prefixed XPath for humans 
+   <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-3">
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -107,7 +118,7 @@
    </xsl:template>
 
    <!--MODE: GENERATE-ID-FROM-PATH -->
-<xsl:template match="/" mode="generate-id-from-path"/>
+   <xsl:template match="/" mode="generate-id-from-path"/>
    <xsl:template match="text()" mode="generate-id-from-path">
       <xsl:apply-templates select="parent::*" mode="generate-id-from-path"/>
       <xsl:value-of select="concat('.text-', 1+count(preceding-sibling::text()), '-')"/>
@@ -131,7 +142,7 @@
    </xsl:template>
 
    <!--MODE: GENERATE-ID-2 -->
-<xsl:template match="/" mode="generate-id-2">U</xsl:template>
+   <xsl:template match="/" mode="generate-id-2">U</xsl:template>
    <xsl:template match="*" mode="generate-id-2" priority="2">
       <xsl:text>U</xsl:text>
       <xsl:number level="multiple" count="*"/>
@@ -150,11 +161,13 @@
       <xsl:text>_</xsl:text>
       <xsl:value-of select="translate(name(),':','.')"/>
    </xsl:template>
-   <!--Strip characters--><xsl:template match="text()" priority="-1"/>
+   <!--Strip characters-->
+   <xsl:template match="text()" priority="-1"/>
 
-   <!--SCHEMA METADATA-->
-<xsl:template match="/">
-      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="BIIRULES  T16 bound to UBL"
+   <!--SCHEMA SETUP-->
+   <xsl:template match="/">
+      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                              title="BIIRULES  T16 bound to UBL"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -181,17 +194,18 @@
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">BIIRULES  T16 bound to UBL</svrl:text>
+   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">BIIRULES  T16 bound to UBL</svrl:text>
 
    <!--PATTERN UBL-T16-->
 
 
-	<!--RULE -->
-<xsl:template match="//cac:DeliveryCustomerParty" priority="1005" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:DeliveryCustomerParty"/>
+	  <!--RULE -->
+   <xsl:template match="//cac:DeliveryCustomerParty" priority="1005" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:DeliveryCustomerParty"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:Party/cac:PartyName/cbc:Name) or (cac:Party/cac:PartyIdentification/cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -209,11 +223,11 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="/ubl:DespatchAdvice" priority="1004" mode="M5">
+   <xsl:template match="/ubl:DespatchAdvice" priority="1004" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/ubl:DespatchAdvice"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:CustomizationID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:CustomizationID)">
@@ -228,7 +242,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:ProfileID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ProfileID)">
@@ -243,7 +257,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">
@@ -258,7 +272,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:IssueDate)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:IssueDate)">
@@ -273,10 +287,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:OrderReference/cbc:ID)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:OrderReference/cbc:ID)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:OrderReference/cbc:ID)">
                <xsl:attribute name="id">BII2-T16-R005</xsl:attribute>
                <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
@@ -288,10 +303,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:DespatchSupplierParty)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:DespatchSupplierParty)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:DespatchSupplierParty)">
                <xsl:attribute name="id">BII2-T16-R006</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -303,10 +319,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:DeliveryCustomerParty)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:DeliveryCustomerParty)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:DeliveryCustomerParty)">
                <xsl:attribute name="id">BII2-T16-R008</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -318,7 +335,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:DespatchLine)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:DespatchLine)">
@@ -335,11 +352,11 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//cac:DespatchLine" priority="1003" mode="M5">
+   <xsl:template match="//cac:DespatchLine" priority="1003" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:DespatchLine"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">
@@ -354,7 +371,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:Item/cbc:Name) or (cac:Item/cac:StandardItemIdentification/cbc:ID) or  (cac:Item/cac:SellersItemIdentification/cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -370,7 +387,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:DeliveredQuantity)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:DeliveredQuantity)">
@@ -385,10 +402,11 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:DeliveredQuantity) &gt;= 0"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:DeliveredQuantity) &gt;= 0">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:DeliveredQuantity) &gt;= 0">
                <xsl:attribute name="id">BII2-T16-R019</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -400,7 +418,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:DeliveredQuantity/@unitCode)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -416,7 +434,7 @@
       </xsl:choose>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="((cbc:OutstandingQuantity) and (cbc:OutstandingReason)) or not(cbc:OutstandingQuantity)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -434,11 +452,11 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//cac:Shipment" priority="1002" mode="M5">
+   <xsl:template match="//cac:Shipment" priority="1002" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:Shipment"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">
@@ -455,11 +473,12 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//cac:DespatchSupplierParty" priority="1001" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:DespatchSupplierParty"/>
+   <xsl:template match="//cac:DespatchSupplierParty" priority="1001" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:DespatchSupplierParty"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cac:Party/cac:PartyName/cbc:Name)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -477,11 +496,11 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="//cac:Item" priority="1000" mode="M5">
+   <xsl:template match="//cac:Item" priority="1000" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:Item"/>
 
 		    <!--ASSERT -->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(//cac:StandardItemIdentification/cbc:ID/@schemeID) or not(//cac:StandardItemIdentification)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"

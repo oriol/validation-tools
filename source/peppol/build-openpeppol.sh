@@ -23,7 +23,7 @@ create_xslt_from_sch.sh  OPENPEPPOL-UBL-T14
 echo "========================="
 echo "Create schematron for T14"
 create_code_rules.sh OPENPEPPOLCodesT16-UBL
-e2sch.rb businessrules/OpenPEPPOL-T16-BusinessRules-v02.ods schematron OPENPEPPOL
+e2sch.rb businessrules/OpenPEPPOL-T16-BusinessRules-v03.ods schematron OPENPEPPOL
 create_xslt_from_sch.sh  OPENPEPPOL-UBL-T16
 
 echo "========================="

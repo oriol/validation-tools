@@ -3,7 +3,7 @@
 
         	CEFACT syntax binding to the T01   
         	Author: Oriol Bausà
-            Timestamp: 2016-03-05 15:49:49 +0100
+            Timestamp: 2016-03-05 16:01:32 +0100
      -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:cac="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10" xmlns:CEFACT="urn:un:unece:uncefact:data:standard:CrossIndustryOrder:3" queryBinding="xslt2">
   <title>BIIRULES  T01 bound to CEFACT</title>

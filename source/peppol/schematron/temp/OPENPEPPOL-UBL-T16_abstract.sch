@@ -2,7 +2,7 @@
 
         	UBL syntax binding to the T16   
         	Author: Oriol Bausà
-            Timestamp: 2016-03-05 16:00:39 +0100
+            Timestamp: 2016-03-05 16:17:57 +0100
      --><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" queryBinding="xslt2">
   <title>OPENPEPPOL  T16 bound to UBL</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
@@ -55,6 +55,7 @@
   <param name="party" value="//cac:PartyIdentification"/>
   <param name="country" value="/cac:Country"/>
   <param name="endpoint" value="//cbc:EndpointID"/>
+  <param name="despatch_advice_Line" value="//cac:DespatchLine"/>
 </pattern><?DSDL_INCLUDE_END UBL/OPENPEPPOL-UBL-T16.sch?>
   <!-- Code Lists Binding rules -->
   <!-- ======================== -->

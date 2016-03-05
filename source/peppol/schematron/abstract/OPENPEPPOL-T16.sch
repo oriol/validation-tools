@@ -1,6 +1,6 @@
 <!-- Schematron rules generated automatically by Validex Generator Midran ltd -->
 <!-- Abstract rules for T16 -->
-<!-- Timestamp: 2016-03-05 16:00:39 +0100 -->
+<!-- Timestamp: 2016-03-05 16:17:57 +0100 -->
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="T16">
   <rule context="$unit_code">
     <assert test="$EUGEN-T16-R004" flag="fatal" id="EUGEN-T16-R004">[EUGEN-T16-R004]-A unit code attribute MUST have a unit code list identifier attribute UNECERec20.</assert>

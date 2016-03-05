@@ -340,8 +340,8 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="$despatch_advice_Line" priority="1000" mode="M6">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="$despatch_advice_Line"/>
+   <xsl:template match="//cac:DespatchLine" priority="1000" mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:DespatchLine"/>
 
 		    <!--ASSERT -->
       <xsl:choose>

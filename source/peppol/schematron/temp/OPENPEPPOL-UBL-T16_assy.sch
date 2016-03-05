@@ -33,7 +33,7 @@
   <rule context="/cac:Country">
     <assert test="(cbc:IdentificationCode/@listID='ISO3166-1:Alpha2')" flag="fatal" id="EUGEN-T16-R003">[EUGEN-T16-R003]-A country identification code MUST have a list identifier attribute ISO3166-1:Alpha2.</assert>
   </rule>
-  <rule context="$despatch_advice_Line">
+  <rule context="//cac:DespatchLine">
     <assert test="(cbc:DeliveredQuantity)" flag="fatal" id="EUGEN-T16-R007">[EUGEN-T16-R007]-Each despatch advice line MUST have a delivered quantity</assert>
   </rule>
 </pattern>

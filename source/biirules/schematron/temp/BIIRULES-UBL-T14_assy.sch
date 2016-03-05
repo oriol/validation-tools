@@ -17,7 +17,7 @@
   <!--Start pattern based on abstract T14--><pattern id="UBL-T14">
   <rule context="/ubl:CreditNote/cac:AllowanceCharge">
     <assert test="(cbc:AllowanceChargeReason)" flag="fatal" id="BII2-T14-R025">[BII2-T14-R025]-Each document level allowance or charge details MUST have an allowance and charge reason text</assert>
-    <assert test="(/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)" flag="fatal" id="BII2-T14-R043">[BII2-T14-R043]-Document level allowances and charges details MUST have allowance and charge VAT category if the credit note has a VAT total amount</assert>
+    <assert test="((/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)) or not(/ubl:CreditNote/cac:TaxTotal)" flag="fatal" id="BII2-T14-R043">[BII2-T14-R043]-Document level allowances and charges details MUST have allowance and charge VAT category if the credit note has a VAT total amount</assert>
   </rule>
   <rule context="/ubl:CreditNote">
     <assert test="(cbc:CustomizationID)" flag="fatal" id="BII2-T14-R001">[BII2-T14-R001]-A credit note MUST have a customization identifier</assert>

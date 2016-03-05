@@ -17,7 +17,7 @@
   <!--Start pattern based on abstract T10--><pattern id="UBL-T10">
   <rule context="/ubl:Invoice/cac:AllowanceCharge">
     <assert test="(cbc:AllowanceChargeReason)" flag="fatal" id="BII2-T10-R025">[BII2-T10-R025]-Each document level allowance or charge details MUST have an allowance and charge reason text</assert>
-    <assert test="(/ubl:Invoice/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)" flag="fatal" id="BII2-T10-R043">[BII2-T10-R043]-Document level allowances and charges details MUST have allowance and charge VAT category if the invoice has a VAT total amount</assert>
+    <assert test="((/ubl:Invoice/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)) or not(/ubl:Invoice/cac:TaxTotal)" flag="fatal" id="BII2-T10-R043">[BII2-T10-R043]-Document level allowances and charges details MUST have allowance and charge VAT category if the invoice has a VAT total amount</assert>
   </rule>
   <rule context="/ubl:Invoice">
     <assert test="(cbc:CustomizationID)" flag="fatal" id="BII2-T10-R001">[BII2-T10-R001]-An invoice MUST have a customization identifier</assert>

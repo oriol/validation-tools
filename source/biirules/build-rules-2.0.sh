@@ -15,7 +15,7 @@ create_code_rules.sh  BIIRULESCodesT01-CEFACT
 
 
 echo "Create schematron from ods  adding codelist T01 rules"
-e2sch.rb businessrules/bii2rules-T01-BusinessRules-v09.ods schematron BIIRULES
+e2sch.rb businessrules/bii2rules-T01-BusinessRules-v10.ods schematron BIIRULES
 
 echo "Assemblying to xslt validation sheet"
 create_xslt2.0_from_sch.sh  BIIRULES-UBL-T01
@@ -53,7 +53,7 @@ create_code_rules.sh BIIRULESCodesT10-CEFACT
 
 
 echo "Create schematron from ods adding codelist T10 rules"
-e2sch.rb businessrules/bii2rules-T10-BusinessRules-v12.ods schematron BIIRULES
+e2sch.rb businessrules/bii2rules-T10-BusinessRules-v13.ods schematron BIIRULES
 
 echo "Assemblying to xslt validation sheet"
 create_xslt2.0_from_sch.sh  BIIRULES-UBL-T10
@@ -66,7 +66,7 @@ create_code_rules.sh BIIRULESCodesT14-CEFACT
 
 
 echo "Create schematron from ods adding codelist T14 rules"
-e2sch.rb businessrules/bii2rules-T14-BusinessRules-v09.ods schematron BIIRULES
+e2sch.rb businessrules/bii2rules-T14-BusinessRules-v10.ods schematron BIIRULES
 
 echo "Assemblying to xslt validation sheet"
 create_xslt2.0_from_sch.sh  BIIRULES-UBL-T14

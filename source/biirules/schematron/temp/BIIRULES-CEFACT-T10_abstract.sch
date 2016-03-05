@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- 
+<?xml version="1.0" encoding="utf-8"?><!-- 
 
         	CEFACT syntax binding to the T10   
         	Author: Oriol Bausà
-
+            Timestamp: 2016-03-05 15:50:12 +0100
      --><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10" xmlns:cac="urn:un:unece:uncefact:data:Standard:ReusableAggregateBusinessInformationEntity:10" xmlns:CEFACT="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:4" queryBinding="xslt2">
   <title>BIIRULES  T10 bound to CEFACT</title>
   <ns prefix="udt" uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:10"/>

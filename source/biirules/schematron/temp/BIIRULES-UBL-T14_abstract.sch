@@ -2,7 +2,7 @@
 
         	UBL syntax binding to the T14   
         	Author: Oriol Bausà
-
+            Timestamp: 2016-03-05 15:52:21 +0100
      --><schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" queryBinding="xslt2">
   <title>BIIRULES  T14 bound to UBL</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
@@ -112,7 +112,7 @@
   <param name="BII2-T14-R034" value="(cac:Price/cbc:PriceAmount) &gt;= 0"/>
   <param name="BII2-T14-R035" value="(cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount) &gt;= 0"/>
   <param name="BII2-T14-R037" value="(cac:LegalMonetaryTotal/cbc:PayableAmount) &gt;= 0"/>
-  <param name="BII2-T14-R043" value="(/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)"/>
+  <param name="BII2-T14-R043" value="((/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID = 'VAT') and (cac:TaxCategory/cbc:ID)) or not(/ubl:CreditNote/cac:TaxTotal)"/>
   <param name="BII2-T14-R044" value="(cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID) or not(cac:TaxTotal/*/*/*/cbc:ID = 'VAT')"/>
   <param name="BII2-T14-R045" value="(cac:TaxCategory/cbc:TaxExemptionReason) or not ((normalize-space(cac:TaxCategory/cbc:ID)='E') or (normalize-space(cac:TaxCategory/cbc:ID)='AE'))"/>
   <param name="BII2-T14-R046" value="(cac:Item/cac:ClassifiedTaxCategory/cbc:ID) or not(/ubl:CreditNote/cac:TaxTotal/*/*/*/cbc:ID='VAT')"/>

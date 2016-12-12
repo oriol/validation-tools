@@ -189,7 +189,7 @@
             <xsl:attribute name="name">UBL-T110</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M6"/>
+         <xsl:apply-templates select="/" mode="M5"/>
       </svrl:schematron-output>
    </xsl:template>
 
@@ -202,7 +202,7 @@
 	  <!--RULE -->
    <xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge"
                  priority="1009"
-                 mode="M6">
+                 mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="/ubl:OrderResponse/cac:AllowanceCharge"/>
 
@@ -221,13 +221,13 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
    <xsl:template match="//cac:Country/cbc:IdentificationCode"
                  priority="1008"
-                 mode="M6">
+                 mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//cac:Country/cbc:IdentificationCode"/>
 
@@ -246,13 +246,13 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
    <xsl:template match="//*[contains(name(),'CurrencyCode')]"
                  priority="1007"
-                 mode="M6">
+                 mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//*[contains(name(),'CurrencyCode')]"/>
 
@@ -270,11 +270,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cbc:EndpointID" priority="1006" mode="M6">
+   <xsl:template match="//cbc:EndpointID" priority="1006" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cbc:EndpointID"/>
 
 		    <!--ASSERT -->
@@ -291,11 +291,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cbc:ItemClassificationCode" priority="1005" mode="M6">
+   <xsl:template match="//cbc:ItemClassificationCode" priority="1005" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//cbc:ItemClassificationCode"/>
 
@@ -313,11 +313,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="/ubl:OrderResponse" priority="1004" mode="M6">
+   <xsl:template match="/ubl:OrderResponse" priority="1004" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/ubl:OrderResponse"/>
 
 		    <!--ASSERT -->
@@ -415,11 +415,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cac:PartyIdentification/cbc:ID" priority="1003" mode="M6">
+   <xsl:template match="//cac:PartyIdentification/cbc:ID" priority="1003" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//cac:PartyIdentification/cbc:ID"/>
 
@@ -437,11 +437,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cac:TaxCategory/cbc:ID" priority="1002" mode="M6">
+   <xsl:template match="//cac:TaxCategory/cbc:ID" priority="1002" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//cac:TaxCategory/cbc:ID"/>
 
@@ -459,11 +459,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="/cac:LegalMonetaryTotal" priority="1001" mode="M6">
+   <xsl:template match="/cac:LegalMonetaryTotal" priority="1001" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="/cac:LegalMonetaryTotal"/>
 
@@ -501,10 +501,10 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="((cac:LineExtensionAmount) and (cac:TaxExclusiveAmount) and (cac:TaxInclusiveAmount)) or (not((cac:PayableAmount))"/>
+         <xsl:when test="((cac:LineExtensionAmount) and (cac:TaxExclusiveAmount) and (cac:TaxInclusiveAmount)) or (not(cac:PayableAmount))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((cac:LineExtensionAmount) and (cac:TaxExclusiveAmount) and (cac:TaxInclusiveAmount)) or (not((cac:PayableAmount))">
+                                test="((cac:LineExtensionAmount) and (cac:TaxExclusiveAmount) and (cac:TaxInclusiveAmount)) or (not(cac:PayableAmount))">
                <xsl:attribute name="id">EUGEN-T110-R018</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -533,10 +533,10 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="((xs:decimal(cbc:ChargeTotalAmount)) = (round(xs:decimal(sum(/ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount)) * 10 * 10) div 100) or (not(cbc:ChargeTotalAmount))"/>
+         <xsl:when test="xs:decimal(cbc:ChargeTotalAmount) = (round(xs:decimal(sum(/ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount)) * 10 * 10) div 100) or (not(cbc:ChargeTotalAmount))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((xs:decimal(cbc:ChargeTotalAmount)) = (round(xs:decimal(sum(/ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount)) * 10 * 10) div 100) or (not(cbc:ChargeTotalAmount))">
+                                test="xs:decimal(cbc:ChargeTotalAmount) = (round(xs:decimal(sum(/ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator=&#34;true&#34;]/cbc:Amount)) * 10 * 10) div 100) or (not(cbc:ChargeTotalAmount))">
                <xsl:attribute name="id">EUGEN-T110-R020</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -597,10 +597,10 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(xs:decimal(cbc:PayableAmount)) = (round((xs:decimal(cbc:TaxInclusiveAmount) + xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100))) or (xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount)) or (not(cbc:PayableAmount))"/>
+         <xsl:when test="(xs:decimal(cbc:PayableAmount)) = (round(xs:decimal(cbc:TaxInclusiveAmount) + xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100 or (xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount)) or (not(cbc:PayableAmount))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(xs:decimal(cbc:PayableAmount)) = (round((xs:decimal(cbc:TaxInclusiveAmount) + xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100))) or (xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount)) or (not(cbc:PayableAmount))">
+                                test="(xs:decimal(cbc:PayableAmount)) = (round(xs:decimal(cbc:TaxInclusiveAmount) + xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100 or (xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount)) or (not(cbc:PayableAmount))">
                <xsl:attribute name="id">EUGEN-T110-R024</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -610,11 +610,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//*[contains(name(),'Quantity')]" priority="1000" mode="M6">
+   <xsl:template match="//*[contains(name(),'Quantity')]" priority="1000" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="//*[contains(name(),'Quantity')]"/>
 
@@ -633,10 +633,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M6"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M6">
-      <xsl:apply-templates select="*" mode="M6"/>
+   <xsl:template match="text()" priority="-1" mode="M5"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M5">
+      <xsl:apply-templates select="*" mode="M5"/>
    </xsl:template>
 </xsl:stylesheet>

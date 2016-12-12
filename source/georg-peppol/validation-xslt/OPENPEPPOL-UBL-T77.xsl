@@ -181,9 +181,291 @@
                                              prefix="cac"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2"
                                              prefix="ubl"/>
+         <svrl:active-pattern>
+            <xsl:attribute name="document">
+               <xsl:value-of select="document-uri(/)"/>
+            </xsl:attribute>
+            <xsl:attribute name="id">UBL-T77</xsl:attribute>
+            <xsl:attribute name="name">UBL-T77</xsl:attribute>
+            <xsl:apply-templates/>
+         </svrl:active-pattern>
+         <xsl:apply-templates select="/" mode="M5"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
    <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">OPENPEPPOL  T77 bound to UBL</svrl:text>
+
+   <!--PATTERN UBL-T77-->
+
+
+	  <!--RULE -->
+   <xsl:template match="//cbc:EndpointID" priority="1003" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cbc:EndpointID"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="@schemeID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeID">
+               <xsl:attribute name="id">EUGEN-T77-R013</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R013]-An endpoint identifier MUST have a scheme identifier attribute</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="@schemeID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeID">
+               <xsl:attribute name="id">EUGEN-T77-R014</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R014]-A party identifier MUST have a scheme identifier attribute</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="//cac:CatalogueLine/cac:Item" priority="1002" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:CatalogueLine/cac:Item"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="((cac:AdditionalItemProperty[cbc:Name = 'ServiceIndicator']) and (cac:AdditionalItemProperty[cbc:Value = 'true'] or (cac:AdditionalItemProperty[cbc:Value = 'false']))) or (not(cac:AdditionalItemProperty[cbc:Name = 'ServiceIndicator']))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((cac:AdditionalItemProperty[cbc:Name = 'ServiceIndicator']) and (cac:AdditionalItemProperty[cbc:Value = 'true'] or (cac:AdditionalItemProperty[cbc:Value = 'false']))) or (not(cac:AdditionalItemProperty[cbc:Name = 'ServiceIndicator']))">
+               <xsl:attribute name="id">EUGEN-T77-R010</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R010]-For AdditionalItemProperties where name is ServiceIndicator the value may only be "true" or "false".</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(count(cac:ItemSpecificationDocumentReference[cbc:DocumentTypeCode = 'main_image']) = 1)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(count(cac:ItemSpecificationDocumentReference[cbc:DocumentTypeCode = 'main_image']) = 1)">
+               <xsl:attribute name="id">EUGEN-T77-R012</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R012]-Only one attachment may be identified as main image.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="//cac:CatalogueLine/cac:RequiredItemLocationQuantity"
+                 priority="1001"
+                 mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:CatalogueLine/cac:RequiredItemLocationQuantity"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cac:Price/cbc:PriceAmount/@unitCode) = (cac:DeliveryUnit/cbc:BatchQuantity/@unitCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:Price/cbc:PriceAmount/@unitCode) = (cac:DeliveryUnit/cbc:BatchQuantity/@unitCode)">
+               <xsl:attribute name="id">EUGEN-T77-R008</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R008]-Unit code for price base quantity must be same as for batch quantity.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cac:Price/cbc:PriceAmount)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:Price/cbc:PriceAmount)">
+               <xsl:attribute name="id">EUGEN-T77-R009</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R009]-Each line must have a price.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="((cbc:LeadTimeMeasure/@unitCode)= 'DAY') or (not(cbc:LeadTimeMeasure))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((cbc:LeadTimeMeasure/@unitCode)= 'DAY') or (not(cbc:LeadTimeMeasure))">
+               <xsl:attribute name="id">EUGEN-T77-R011</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R011]-LeadTimeMeasure unitCode shall only be DAY</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="/ubl:Catalogue" priority="1000" mode="M5">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/ubl:Catalogue"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cbc:CustomizationID) = 'urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0'"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:CustomizationID) = 'urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0'">
+               <xsl:attribute name="id">EUGEN-T77-R001</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R001]-CustomizationID shall be urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cbc:ProfileID)= 'urn:www.cenbii.eu:profile:bii18:ver1.0'"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:ProfileID)= 'urn:www.cenbii.eu:profile:bii18:ver1.0'">
+               <xsl:attribute name="id">EUGEN-T77-R002</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R002]-ProfileID shall be urn:www.cenbii.eu:profile:bii18:ver1.0</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cac:ValidityPeriod/cbc:EndDate) and (number(translate(cac:ValidityPeriod/cbc:EndDate,'-','')) &lt;= number(translate(cbc:IssueDate,'-',''))) "/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:ValidityPeriod/cbc:EndDate) and (number(translate(cac:ValidityPeriod/cbc:EndDate,'-','')) &lt;= number(translate(cbc:IssueDate,'-','')))">
+               <xsl:attribute name="id">EUGEN-T77-R003</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R003]-The validity period end date may not be earlier than the issue date.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="((cbc:ActionCode) = 'true') or ((cbc:ActionCode) = 'false') or (not(cbc:ActionCode))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((cbc:ActionCode) = 'true') or ((cbc:ActionCode) = 'false') or (not(cbc:ActionCode))">
+               <xsl:attribute name="id">EUGEN-T77-R004</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R004]-Complete cart indicator may only be "true" or "false"</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cbc:IssueDate) &lt;= current-date()"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:IssueDate) &lt;= current-date()">
+               <xsl:attribute name="id">EUGEN-T77-R005</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R005]-IssueDate may not be later than today.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cac:ProviderParty/cac:Party/cbc:EndpointID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:ProviderParty/cac:Party/cbc:EndpointID)">
+               <xsl:attribute name="id">EUGEN-T77-R006</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R006]-The shopping cart message should contain the Sellers end point id.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cac:ReceiverParty/cac:Party/cbc:EndpointID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:ReceiverParty/cac:Party/cbc:EndpointID)">
+               <xsl:attribute name="id">EUGEN-T77-R007</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R007]-The shopping cart message should contain the Buyers end point id.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cbc:UBLVersionID) = '2.1'"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:UBLVersionID) = '2.1'">
+               <xsl:attribute name="id">EUGEN-T77-R015</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EUGEN-T77-R015]-UBL version must be 2.1</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M5"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M5">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
 </xsl:stylesheet>

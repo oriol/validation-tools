@@ -1,6 +1,6 @@
 <!-- Schematron rules generated automatically by Validex Generator Midran ltd -->
 <!-- Abstract rules for T110 -->
-<!-- Timestamp: 2016-12-12 22:10:34 +0100 -->
+<!-- Timestamp: 2016-12-12 23:50:43 +0100 -->
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="T110">
   <rule context="$Allowance_Charge">
     <assert test="$EUGEN-T110-R015" flag="fatal" id="EUGEN-T110-R015">[EUGEN-T110-R015]-Allowances and charges MUST have a reason</assert>

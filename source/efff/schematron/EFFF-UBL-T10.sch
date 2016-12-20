@@ -3,7 +3,7 @@
 
             UBL syntax binding to the T10  
             Created by Validex Schematron Generator. (2015) Midran Ltd.
-            Timestamp: 2016-12-12 07:05:39 +0100
+            Timestamp: 2016-12-20 15:34:11 +0100
      -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:UBL="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" queryBinding="xslt2">
   <title>EFFF  T10 bound to UBL</title>
@@ -13,16 +13,10 @@
   <phase id="EFFFT10_phase">
     <active pattern="UBL-T10"/>
   </phase>
-  <phase id="codelist_phase">
-    <active pattern="CodesT10"/>
-  </phase>
   <!-- Abstract CEN BII patterns -->
   <!-- ========================= -->
   <include href="abstract/EFFF-T10.sch"/>
   <!-- Data Binding parameters -->
   <!-- ======================= -->
   <include href="UBL/EFFF-UBL-T10.sch"/>
-  <!-- Code Lists Binding rules -->
-  <!-- ======================== -->
-  <include href="codelist/EFFFCodesT10-UBL.sch"/>
 </schema>

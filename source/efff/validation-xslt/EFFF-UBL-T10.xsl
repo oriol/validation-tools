@@ -8,6 +8,7 @@
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
                 xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
@@ -179,6 +180,8 @@
                                              prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                                              prefix="cac"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
+                                             prefix="cn"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
                                              prefix="ubl"/>
          <svrl:active-pattern>
@@ -189,7 +192,7 @@
             <xsl:attribute name="name">UBL-T10</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
+         <xsl:apply-templates select="/" mode="M6"/>
       </svrl:schematron-output>
    </xsl:template>
 
@@ -200,15 +203,16 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="/ubl:Invoice" priority="1004" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/ubl:Invoice"/>
+   <xsl:template match="/ubl:Invoice | /cn:CreditNote" priority="1006" mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="/ubl:Invoice | /cn:CreditNote"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="cac:AdditionalDocumentReference/cbc:DocumentType = 'CommercialInvoice'"/>
+         <xsl:when test="(cac:AdditionalDocumentReference/cbc:DocumentType = 'CommercialInvoice') or (cac:AdditionalDocumentReference/cbc:DocumentType = 'CreditNote')"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="cac:AdditionalDocumentReference/cbc:DocumentType = 'CommercialInvoice'">
+                                test="(cac:AdditionalDocumentReference/cbc:DocumentType = 'CommercialInvoice') or (cac:AdditionalDocumentReference/cbc:DocumentType = 'CreditNote')">
                <xsl:attribute name="id">EFFF-T10-R001</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -218,30 +222,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="(cbc:ID='eFFF')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID='eFFF')">
-               <xsl:attribute name="id">EFFF-T10-R002</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[EFFF-T10-R002]-An additional document reference containing the information related to the software producing the invoice MUST be present.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="//cac:AdditionalDocumentReference[cbc:ID='eFFF']"
-                 priority="1003"
-                 mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="//cac:AdditionalDocumentReference[cbc:ID='eFFF']"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
@@ -255,6 +235,30 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>[EFFF-T10-R003]-The identifier of the document reference containing the information related to the software producing the invoice MUST contain "eFFF" as value</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="//cac:AdditionalDocumentReference[cbc:ID='eFFF']"
+                 priority="1005"
+                 mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:AdditionalDocumentReference[cbc:ID='eFFF']"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="(cbc:ID='eFFF')"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID='eFFF')">
+               <xsl:attribute name="id">EFFF-T10-R002</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EFFF-T10-R002]-An additional document reference containing the information related to the software producing the invoice MUST be present.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -274,19 +278,19 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cac:PaymentTerms" priority="1002" mode="M5">
+   <xsl:template match="//cac:PaymentTerms" priority="1004" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:PaymentTerms"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(cbc:SettlementDiscountPercent) and (cbc:Amount)"/>
+         <xsl:when test="((cbc:SettlementDiscountPercent) and (cbc:Amount)) or not(cbc:SettlementDiscountPercent)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cbc:SettlementDiscountPercent) and (cbc:Amount)">
+                                test="((cbc:SettlementDiscountPercent) and (cbc:Amount)) or not(cbc:SettlementDiscountPercent)">
                <xsl:attribute name="id">EFFF-T10-R005</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -299,10 +303,10 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(cbc:SettlementDiscountPercent) and (cac:SettlementPeriod/cbc:EndDate)"/>
+         <xsl:when test="((cbc:SettlementDiscountPercent) and (cac:SettlementPeriod/cbc:EndDate)) or not(cbc:SettlementDiscountPercent)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cbc:SettlementDiscountPercent) and (cac:SettlementPeriod/cbc:EndDate)">
+                                test="((cbc:SettlementDiscountPercent) and (cac:SettlementPeriod/cbc:EndDate)) or not(cbc:SettlementDiscountPercent)">
                <xsl:attribute name="id">EFFF-T10-R006</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -312,11 +316,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cac:TaxCategory" priority="1001" mode="M5">
+   <xsl:template match="//cac:TaxCategory" priority="1003" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:TaxCategory"/>
 
 		    <!--ASSERT -->
@@ -333,12 +337,31 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="exists(cbc:Name) and ((cbc:Name = '00' and cbc:ID = 'Z') or (cbc:Name = '01' and cbc:ID = 'AA') or (cbc:Name = '02' and cbc:ID = 'AA') or (cbc:Name = '03' and cbc:ID = 'S') or (cbc:Name = '45' and cbc:ID = 'AE') or (cbc:Name = 'NA' and cbc:ID = 'E') or (cbc:Name = 'MA' and cbc:ID = 'S') or (cbc:Name = '00/44' and cbc:ID = 'E') or (cbc:Name = '46/GO' and cbc:ID = 'AE') or (cbc:Name = '47/TO' and cbc:ID = 'AE') or (cbc:Name = '47/AS' and cbc:ID = 'AE') or (cbc:Name = '47/DI' and cbc:ID = 'AE') or (cbc:Name = '47/SE' and cbc:ID = 'AE') or (cbc:Name = '46/TR' and cbc:ID = 'AE') or (cbc:Name = '44' and cbc:ID = 'AE') or (cbc:Name = '47/EX' and cbc:ID = 'E') or (cbc:Name = '47/EI' and cbc:ID = 'E') or (cbc:Name = '47/EE' and cbc:ID = 'E') or (cbc:Name = '03/SE' and cbc:ID = 'S')) or not(cbc:Name)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="exists(cbc:Name) and ((cbc:Name = '00' and cbc:ID = 'Z') or (cbc:Name = '01' and cbc:ID = 'AA') or (cbc:Name = '02' and cbc:ID = 'AA') or (cbc:Name = '03' and cbc:ID = 'S') or (cbc:Name = '45' and cbc:ID = 'AE') or (cbc:Name = 'NA' and cbc:ID = 'E') or (cbc:Name = 'MA' and cbc:ID = 'S') or (cbc:Name = '00/44' and cbc:ID = 'E') or (cbc:Name = '46/GO' and cbc:ID = 'AE') or (cbc:Name = '47/TO' and cbc:ID = 'AE') or (cbc:Name = '47/AS' and cbc:ID = 'AE') or (cbc:Name = '47/DI' and cbc:ID = 'AE') or (cbc:Name = '47/SE' and cbc:ID = 'AE') or (cbc:Name = '46/TR' and cbc:ID = 'AE') or (cbc:Name = '44' and cbc:ID = 'AE') or (cbc:Name = '47/EX' and cbc:ID = 'E') or (cbc:Name = '47/EI' and cbc:ID = 'E') or (cbc:Name = '47/EE' and cbc:ID = 'E') or (cbc:Name = '03/SE' and cbc:ID = 'S')) or not(cbc:Name)">
+               <xsl:attribute name="id">EFFF-T10-R017</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EFFF-T10-R017]-The Belgian Tax category code SHOULD match the PEPPOL Tax category code.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="//cac:InvoiceLine" priority="1000" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="//cac:InvoiceLine"/>
+   <xsl:template match="//cac:InvoiceLine | //cac:CreditNoteLine"
+                 priority="1002"
+                 mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:InvoiceLine | //cac:CreditNoteLine"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
@@ -422,22 +445,6 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="((../cac:PaymentTerms/cbc:SettlementDiscountPercent) and (cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason = 'Cash discount')) or not(../cac:PaymentTerms/cbc:SettlementDiscountPercent) or not(cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((../cac:PaymentTerms/cbc:SettlementDiscountPercent) and (cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason = 'Cash discount')) or not(../cac:PaymentTerms/cbc:SettlementDiscountPercent) or not(cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason)">
-               <xsl:attribute name="id">EFFF-T10-R013</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[EFFF-T10-R013]-If the percentage used to calculate the cash payment discount is present and the amount is exempt from VAT, the tax exemption reason MUST contain "Cash Discount" as value.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-      <xsl:choose>
          <xsl:when test="((../cac:PaymentTerms/cbc:SettlementDiscountPercent) and (cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT')) or not(../cac:PaymentTerms/cbc:SettlementDiscountPercent)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -447,7 +454,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[EFFF-T10-R014]-If the percentage used to calculate the cash payment discount is present, the tax scheme identifier MUST contains "VAT" as value.</svrl:text>
+               <svrl:text>[EFFF-T10-R014]-If the percentage used to calculate the cash payment discount is present, the tax scheme identifier MUST contain "VAT" as value.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -467,10 +474,58 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+
+	  <!--RULE -->
+   <xsl:template match="//cac:TaxTotal/cac:TaxSubtotal[cac:TaxCategory/cbc:ID = 'E']"
+                 priority="1001"
+                 mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:TaxTotal/cac:TaxSubtotal[cac:TaxCategory/cbc:ID = 'E']"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="((../../cac:PaymentTerms/cbc:SettlementDiscountPercent) and (cac:TaxCategory/cbc:TaxExemptionReason = 'Cash Discount')) or not(../../cac:PaymentTerms/cbc:SettlementDiscountPercent)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((../../cac:PaymentTerms/cbc:SettlementDiscountPercent) and (cac:TaxCategory/cbc:TaxExemptionReason = 'Cash Discount')) or not(../../cac:PaymentTerms/cbc:SettlementDiscountPercent)">
+               <xsl:attribute name="id">EFFF-T10-R013</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EFFF-T10-R013]-If the percentage used to calculate the cash payment discount is present and the amount is exempt from VAT, the tax exemption reason MUST contain "Cash Discount" as value.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="//cac:TaxCategory/cbc:Name" priority="1000" mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="//cac:TaxCategory/cbc:Name"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="( ( not(contains(normalize-space(.),' ')) and contains( ' 00 01 02 03 45 NA MA 00/44 46/GO 47/TO 47/AS 47/DI 47/SE 46/TR 44 47/EX 47/EI 47/EE 03/SE  ',concat(' ',normalize-space(.),' ') ) ) )"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( ( not(contains(normalize-space(.),' ')) and contains( ' 00 01 02 03 45 NA MA 00/44 46/GO 47/TO 47/AS 47/DI 47/SE 46/TR 44 47/EX 47/EI 47/EE 03/SE ',concat(' ',normalize-space(.),' ') ) ) )">
+               <xsl:attribute name="id">EFFF-T10-R016</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[EFFF-T10-R016]-The Belgian Tax category MUST be specified using the Belgian Tax Category code list.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M6"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M6">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 </xsl:stylesheet>

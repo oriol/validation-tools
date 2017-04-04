@@ -250,21 +250,6 @@
 
 		    <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(cbc:ID='eFFF')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID='eFFF')">
-               <xsl:attribute name="id">EFFF-T10-R002</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[EFFF-T10-R002]-An additional document reference containing the information related to the software producing the invoice MUST be present.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-      <xsl:choose>
          <xsl:when test="string-length(cbc:DocumentType) &gt; 1"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
